@@ -7,7 +7,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo {N}
 
 * **Integrante 1** - [integrante1](https://github.com/integrante1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
+* **Franco Macke** - [franmacke](https://github.com/franmacke)
 * **Alvaro Martin** - [alvaromartin47-rgb](https://github.com/alvaromartin47-rgb)
 * **Guillermina Hoffmann** - [guillehoff](https://github.com/guillehoff)
 
