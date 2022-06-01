@@ -1,0 +1,155 @@
+@startuml sec-moto-atraviesa-grilla-sin-obs
+
+title Una moto atraviesa la grilla sin obstaculos\n y la cantidad de movimientos es X
+
+Actor Usuario as user
+participant "tablero:Tablero" as tablero
+participant "Filtrador" as filtrador
+participant "vehiculo:Vehiculo" as vehiculo
+participant "Modificador" as modificador
+participant "llegada:Llegada" as llegada
+participant "celda:Celda" as celda
+
+activate tablero
+
+loop Por cada par f, c hasta X
+
+    user -> tablero: mover(f, c)
+    
+    tablero -> tablero: buscarCelda(f, c)
+    
+    activate filtrador
+    tablero -> filtrador: getModificadoresConFin(celda(f, c), modif)
+    filtrador --> tablero: []
+    deactivate filtrador
+
+    activate vehiculo
+    tablero -> vehiculo: mover(celda(f, c), [])
+    activate filtrador 
+    vehiculo -> filtrador: getModificadoresConIni(celdaActual, modif)
+    filtrador --> vehiculo: []
+    deactivate filtrador
+
+    loop Por cada Modificador
+        activate modificador
+        vehiculo -> modificador: cruzarCon(self)
+        deactivate modificador
+    end
+    
+    activate llegada
+    vehiculo -> llegada: esLlegada(celda(1, 2))
+    
+    activate celda
+    llegada -> celda: esMismaCelda(celda(1, 2))
+    celda --> llegada: false
+    deactivate celda
+
+    llegada --> vehiculo: false
+    deactivate llegada
+    
+    vehiculo --> tablero: celda = celda(1, 2)\nmovimientos + 1
+    deactivate vehiculo
+
+    tablero --> user: false
+
+end
+
+user -> tablero: movimientos()
+
+activate vehiculo
+tablero -> vehiculo: movimientos()
+vehiculo --> tablero: X
+deactivate vehiculo
+
+tablero --> user: X
+
+@enduml
+
+@startuml ejemplo-para-entender
+
+title Un vehiculo atraviesa la grilla y cruza un obstaculo y el juego no termina
+
+Actor Usuario as user
+participant "tablero:Tablero" as tablero
+participant "Filtrador" as filtrador
+participant "vehiculo:Vehiculo" as vehiculo
+participant "Modificador" as modificador
+participant "llegada:Llegada" as llegada
+participant "celda:Celda" as celda
+
+activate tablero
+
+user -> tablero: mover(1, 2)
+
+tablero -> tablero: buscarCelda(1, 2)
+
+activate filtrador
+tablero -> filtrador: getModificadoresConFin(celda(1, 2), modif)
+filtrador --> tablero: [Modif1,..., ModifN]
+deactivate filtrador
+
+activate vehiculo
+tablero -> vehiculo: mover(celda(1, 2), [Modif1,..., ModifN])
+activate filtrador 
+vehiculo -> filtrador: getModifConIni(celdaAct, [Modif1,..., ModifN])
+filtrador --> vehiculo: [Modif1,..., ModifN]
+deactivate filtrador
+
+loop Por cada Modificador
+    activate modificador
+    vehiculo -> modificador: cruzarCon(self: Vehiculo)
+    deactivate modificador
+end
+
+activate llegada
+vehiculo -> llegada: esLlegada(celda(f, c))
+
+activate celda
+llegada -> celda: esMismaCelda(celda(f, c))
+celda --> llegada: false
+deactivate celda
+
+llegada --> vehiculo: false
+deactivate llegada
+
+vehiculo --> tablero: celda = celda(f, c)\nmovimientos + 1
+deactivate vehiculo
+
+tablero --> user: false
+deactivate tablero
+
+@enduml
+
+@startuml sec-modificadores-sorpresa
+
+title Caso modificador sorpresa
+
+participant "sorpresa:Sorpresa" as sorpresa
+participant "vehiculo:Vehiculo" as vehiculo
+
+activate sorpresa
+activate vehiculo
+
+sorpresa -> vehiculo: agregarActivable(self)
+
+deactivate sorpresa
+deactivate vehiculo
+
+@enduml
+
+@startuml sec-modificadores-obstaculo
+
+title Caso modificador obstaculo pozo
+
+participant "pozo:Pozo" as pozo
+participant "vehiculo:Vehiculo" as vehiculo
+
+activate pozo
+activate vehiculo
+
+pozo -> vehiculo: pozo()
+
+deactivate pozo
+deactivate vehiculo
+
+@enduml

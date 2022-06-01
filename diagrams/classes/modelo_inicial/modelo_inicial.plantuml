@@ -1,0 +1,154 @@
+@startuml mod-inicial
+
+class Tablero {
+    + mover(f: Int, c: Int): Boolean
+    + activarSorpresa()
+}
+
+abstract Vehiculo {
+    + activarSorpresa(): Vehiculo
+    + sumarMovimientos()
+    + restarMovimientos()
+    + {abstract} mover(celda: Celda, modificadores: Array): Boolean
+    + {abstract} reemplazar(): Vehiculo
+    + {abstract} pozo()
+    + {abstract} piquete()
+    + {abstract} controlPolicial()
+}
+
+abstract Modificador {
+    + {abstract} cruzarCon(vehiculo: Vehiculo)
+}
+
+abstract Obstaculo {
+    + {abstract} cruzarCon(vehiculo: Vehiculo)
+}
+
+abstract Sorpresa {
+    + {abstract} cruzarCon(vehiculo: Vehiculo)
+    + {abstract} activar(): Vehiculo
+}
+
+
+class Celda {
+    - f: Int
+    - c: Int
+
+    + esMismaCelda(celda: Celda)
+    + fila(): Int
+    + columna(): Int
+}
+
+class Llegada {
+    esLlegada(celda: Celda): Boolean
+}
+
+class Registro {
+
+}
+
+
+Obstaculo --|> Modificador
+Sorpresa --|> Modificador
+Tablero --> "*" Modificador
+Tablero --> Vehiculo
+Vehiculo --> Celda
+Tablero --> "*" Celda
+Modificador --> "2" Celda
+Vehiculo .. Modificador
+Vehiculo -right-> Llegada
+Llegada --> Celda
+Tablero -up-> Registro
+Vehiculo "0..1" -- "0..*" Sorpresa
+
+@enduml
+
+@startuml ext-herencias
+
+class 4x4 { 
+    + mover()
+    + pozo()
+    + piquete()
+    + controlPolicial()
+    + reemplazar(): Vehiculo
+}
+
+class Moto {
+    + mover()
+    + pozo()
+    + piquete()
+    + controlPolicial()
+    + reemplazar(): Vehiculo
+}
+
+class Auto {
+    + mover()
+    + pozo()
+    + piquete()
+    + controlPolicial()
+    + reemplazar(): Vehiculo
+}
+
+abstract Vehiculo {
+    - celda: Celda
+    - llegada: Llegada
+    - sorpresas: Array<Sorpresa>
+
+    + activarSorpresa(): Vehiculo
+    + sumarMovimientos()
+    + restarMovimientos()
+    + {abstract} mover(celda: Celda, modificadores: Array): Boolean
+    + {abstract} reemplazar(): Vehiculo
+    + {abstract} pozo()
+    + {abstract} piquete()
+    + {abstract} controlPolicial()
+}
+
+abstract Obstaculo {
+    + {abstract} cruzarCon(vehiculo: Vehiculo)
+}
+
+abstract Sorpresa {
+    - vehiculo: Vehiculo
+    + cruzarCon(vehiculo: Vehiculo)
+    + {abstract} activar()
+}
+
+class Pozo {
+    + cruzarCon(vehiculo: Vehiculo)
+}
+
+class ControlPolicial {
+    + cruzarCon(vehiculo: Vehiculo)
+}
+
+class Piquete {
+    + cruzarCon(vehiculo: Vehiculo)
+}
+
+class Favorable {
+    + activar(): Vehiculo
+}
+
+class Desfavorable {
+    + activar(): Vehiculo
+}
+
+class CambioDeVehiculo {
+    + activar(): Vehiculo
+}
+
+
+Favorable --|> Sorpresa
+Desfavorable --|> Sorpresa
+CambioDeVehiculo -up-|> Sorpresa
+
+Pozo --|> Obstaculo
+Piquete --|> Obstaculo
+ControlPolicial -up-|> Obstaculo
+
+4x4 --|> Vehiculo
+Auto --|> Vehiculo
+Moto -up-|> Vehiculo
+
+@enduml
