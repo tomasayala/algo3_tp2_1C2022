@@ -8,7 +8,6 @@ participant "jugador:Jugador" as jugador
 participant "celda:Celda" as celda
 participant "calle:Calle" as calle
 participant "Direccion" as direccion
-participant "vehiculo:Vehiculo" as vehiculo
 participant "Modificador" as modificador
 
 activate tablero
@@ -77,10 +76,10 @@ end
 
 user -> tablero: movimientos()
 
-activate vehiculo
-tablero -> vehiculo: movimientos()
-vehiculo --> tablero: X
-deactivate vehiculo
+activate jugador
+tablero -> jugador: movimientos()
+jugador --> tablero: X
+deactivate jugador
 
 tablero --> user: X
 

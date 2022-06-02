@@ -11,11 +11,13 @@ class Jugador {
     + restarMovimientos()
     + reemplazarVehiculo()
     + mover(dir: Direccion)
+    + movimientos()
 }
 
 class Calle {
     + cruzarCon(jug: Jugador)
     + proximaEsquina(esquinaActual: Celda): Celda
+    + contiene(esquina: Celda): Boolean
 }
 
 interface Vehiculo {
