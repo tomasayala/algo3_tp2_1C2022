@@ -4,55 +4,76 @@ title Una moto atraviesa la grilla sin obstaculos\n y la cantidad de movimientos
 
 Actor Usuario as user
 participant "tablero:Tablero" as tablero
-participant "Filtrador" as filtrador
+participant "jugador:Jugador" as jugador
+participant "celda:Celda" as celda
+participant "calle:Calle" as calle
+participant "Direccion" as direccion
 participant "vehiculo:Vehiculo" as vehiculo
 participant "Modificador" as modificador
-participant "llegada:Llegada" as llegada
-participant "celda:Celda" as celda
 
 activate tablero
 
-loop Por cada par f, c hasta X
+loop Por cada Direccion X veces
 
-    user -> tablero: mover(f, c)
+    user -> tablero: mover(dir: Direccion)
     
-    tablero -> tablero: buscarCelda(f, c)
+    activate jugador
     
-    activate filtrador
-    tablero -> filtrador: getModificadoresConFin(celda(f, c), modif)
-    filtrador --> tablero: []
-    deactivate filtrador
+    tablero -> jugador: mover(dir: Direccion)
 
-    activate vehiculo
-    tablero -> vehiculo: mover(celda(f, c), [])
-    activate filtrador 
-    vehiculo -> filtrador: getModificadoresConIni(celdaActual, modif)
-    filtrador --> vehiculo: []
-    deactivate filtrador
+    activate celda
 
-    loop Por cada Modificador
-        activate modificador
-        vehiculo -> modificador: cruzarCon(self)
-        deactivate modificador
+    jugador -> celda: mover(self, dir: Direccion)
+    celda -> celda: obtenerEsquinas()
+
+    loop Por cada calle
+        activate calle
+
+        celda -> calle: proximaEsquina(self)
+        calle --> celda: esquinaSiguiente: Celda
+        
+        deactivate calle
+    end
+
+    activate direccion
+
+    celda -> direccion: mover(f, c, [esquinas])
+    direccion --> celda: celdaEnSiguienteDireccion
+
+    deactivate direccion
+
+    celda -> celda: obtenerCalleConEsquinas(self, celdaEnSiguienteDireccion)
+    
+    loop Por cada calle
+        activate calle
+
+        celda -> calle: contiene(self)
+        calle --> celda: true
+        celda -> calle: contiene(celdaEnSiguienteDireccion)
+        calle --> celda: true
+
+        deactivate calle
     end
     
-    activate llegada
-    vehiculo -> llegada: esLlegada(celda(1, 2))
+    activate calle
+
+    celda -> calle: cruzarCon(jug: Jugador)
     
-    activate celda
-    llegada -> celda: esMismaCelda(celda(1, 2))
-    celda --> llegada: false
+    activate modificador
+    
+    calle -> modificador: cruzarCon(jug: Jugador)
+
+    deactivate modificador
+    deactivate calle
+
+    celda --> jugador: celdaEnSiguienteDireccion
+    jugador --> tablero: celda = celdaEnSiguienteDireccion\nmoviemientos + 1
+
     deactivate celda
-
-    llegada --> vehiculo: false
-    deactivate llegada
-    
-    vehiculo --> tablero: celda = celda(1, 2)\nmovimientos + 1
-    deactivate vehiculo
-
-    tablero --> user: false
+    deactivate jugador
 
 end
+
 
 user -> tablero: movimientos()
 
@@ -63,93 +84,53 @@ deactivate vehiculo
 
 tablero --> user: X
 
-@enduml
-
-@startuml ejemplo-para-entender
-
-title Un vehiculo atraviesa la grilla y cruza un obstaculo y el juego no termina
-
-Actor Usuario as user
-participant "tablero:Tablero" as tablero
-participant "Filtrador" as filtrador
-participant "vehiculo:Vehiculo" as vehiculo
-participant "Modificador" as modificador
-participant "llegada:Llegada" as llegada
-participant "celda:Celda" as celda
-
-activate tablero
-
-user -> tablero: mover(1, 2)
-
-tablero -> tablero: buscarCelda(1, 2)
-
-activate filtrador
-tablero -> filtrador: getModificadoresConFin(celda(1, 2), modif)
-filtrador --> tablero: [Modif1,..., ModifN]
-deactivate filtrador
-
-activate vehiculo
-tablero -> vehiculo: mover(celda(1, 2), [Modif1,..., ModifN])
-activate filtrador 
-vehiculo -> filtrador: getModifConIni(celdaAct, [Modif1,..., ModifN])
-filtrador --> vehiculo: [Modif1,..., ModifN]
-deactivate filtrador
-
-loop Por cada Modificador
-    activate modificador
-    vehiculo -> modificador: cruzarCon(self: Vehiculo)
-    deactivate modificador
-end
-
-activate llegada
-vehiculo -> llegada: esLlegada(celda(f, c))
-
-activate celda
-llegada -> celda: esMismaCelda(celda(f, c))
-celda --> llegada: false
-deactivate celda
-
-llegada --> vehiculo: false
-deactivate llegada
-
-vehiculo --> tablero: celda = celda(f, c)\nmovimientos + 1
-deactivate vehiculo
-
-tablero --> user: false
 deactivate tablero
 
 @enduml
 
-@startuml sec-modificadores-sorpresa
 
-title Caso modificador sorpresa
+@startuml secuencia-direccion-arriba
 
-participant "sorpresa:Sorpresa" as sorpresa
-participant "vehiculo:Vehiculo" as vehiculo
+title Caso direccion arriba
 
-activate sorpresa
-activate vehiculo
+participant "celdaActual:Celda" as celdaA
+participant "arriba:Arriba" as arriba
+participant "esquina: Celda" as celdaB
 
-sorpresa -> vehiculo: agregarActivable(self)
+activate celdaA
+activate arriba
 
-deactivate sorpresa
-deactivate vehiculo
+celdaA -> arriba: mover(f, c, [esquinas])
+
+loop Por cada esquina si f < fila
+    activate celdaB
+
+    arriba -> celdaB: fila()
+    celdaB --> arriba: fila
+
+    deactivate celdaB
+end
+
+arriba --> celdaA: esquinaConFilaMayor: Celda
+
+deactivate arriba
+deactivate celdaA
 
 @enduml
 
-@startuml sec-modificadores-obstaculo
+@startuml secuencia-modificador-nulo
 
-title Caso modificador obstaculo pozo
+title Caso modificador nulo (calle vacia)
 
-participant "pozo:Pozo" as pozo
-participant "vehiculo:Vehiculo" as vehiculo
+participant "calle:Calle" as calle
+participant "nulo: Nulo" as nulo
 
-activate pozo
-activate vehiculo
+activate calle
+activate nulo
 
-pozo -> vehiculo: pozo()
+calle -> nulo: cruzarCon(jug: Jugador)
 
-deactivate pozo
-deactivate vehiculo
+deactivate calle
+deactivate nulo
 
 @enduml

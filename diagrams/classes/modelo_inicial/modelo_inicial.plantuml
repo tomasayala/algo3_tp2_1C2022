@@ -1,72 +1,105 @@
-@startuml mod-inicial
+@startuml modelo-inicial
 
 class Tablero {
-    + mover(f: Int, c: Int): Boolean
-    + activarSorpresa()
+    + mover(dir: Direccion)
 }
 
-abstract Vehiculo {
-    + activarSorpresa(): Vehiculo
+class Jugador {
+    - movimientos: Int
+
     + sumarMovimientos()
     + restarMovimientos()
-    + {abstract} mover(celda: Celda, modificadores: Array): Boolean
+    + reemplazarVehiculo()
+    + mover(dir: Direccion)
+}
+
+class Calle {
+    + cruzarCon(jug: Jugador)
+    + proximaEsquina(esquinaActual: Celda): Celda
+}
+
+interface Vehiculo {
     + {abstract} reemplazar(): Vehiculo
     + {abstract} pozo()
     + {abstract} piquete()
     + {abstract} controlPolicial()
 }
 
-abstract Modificador {
-    + {abstract} cruzarCon(vehiculo: Vehiculo)
+interface Modificador {
+    + {abstract} cruzarCon(jug: Jugador)
 }
-
-abstract Obstaculo {
-    + {abstract} cruzarCon(vehiculo: Vehiculo)
-}
-
-abstract Sorpresa {
-    + {abstract} cruzarCon(vehiculo: Vehiculo)
-    + {abstract} activar(): Vehiculo
-}
-
 
 class Celda {
     - f: Int
     - c: Int
 
-    + esMismaCelda(celda: Celda)
-    + fila(): Int
-    + columna(): Int
-}
-
-class Llegada {
-    esLlegada(celda: Celda): Boolean
+    - obtenerEsquinas(): Array<Celdas>
+    + mover(jug: Jugador, dir: Direccion): Celda
 }
 
 class Registro {
 
 }
 
+interface Direccion {
+    + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
+}
 
-Obstaculo --|> Modificador
-Sorpresa --|> Modificador
-Tablero --> "*" Modificador
-Tablero --> Vehiculo
-Vehiculo --> Celda
-Tablero --> "*" Celda
-Modificador --> "2" Celda
-Vehiculo .. Modificador
-Vehiculo -right-> Llegada
-Llegada --> Celda
-Tablero -up-> Registro
-Vehiculo "0..1" -- "0..*" Sorpresa
+Tablero -left-> Jugador
+Jugador -left-> Vehiculo
+Jugador --> Celda
+Tablero -right-> Registro
+Calle -left-> Modificador
+Calle .left.> Jugador
+Celda ..> Jugador
+Modificador .left.> Vehiculo
+Celda "2" -- "4" Calle
+Modificador .up.> Jugador
+Tablero ..> Direccion
+Jugador ..> Direccion
+Celda .right.> Direccion
 
 @enduml
 
-@startuml ext-herencias
+@startuml interface-direccion
+
+interface Direccion {
+    + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Arriba {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Abajo {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Derecha {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Izquierda {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+Arriba ..|> Direccion
+Abajo ..|> Direccion
+Derecha .up.|> Direccion
+Izquierda .up.|> Direccion
+
+@enduml
+
+@startuml interface-vehiculo
+
+interface Vehiculo {
+    + {abstract} reemplazar(): Vehiculo
+    + {abstract} pozo()
+    + {abstract} piquete()
+    + {abstract} controlPolicial()
+}
 
 class 4x4 { 
-    + mover()
     + pozo()
     + piquete()
     + controlPolicial()
@@ -74,7 +107,6 @@ class 4x4 {
 }
 
 class Moto {
-    + mover()
     + pozo()
     + piquete()
     + controlPolicial()
@@ -82,36 +114,22 @@ class Moto {
 }
 
 class Auto {
-    + mover()
     + pozo()
     + piquete()
     + controlPolicial()
     + reemplazar(): Vehiculo
 }
 
-abstract Vehiculo {
-    - celda: Celda
-    - llegada: Llegada
-    - sorpresas: Array<Sorpresa>
+4x4 .up.|> Vehiculo
+Auto ..|> Vehiculo
+Moto ..|> Vehiculo
 
-    + activarSorpresa(): Vehiculo
-    + sumarMovimientos()
-    + restarMovimientos()
-    + {abstract} mover(celda: Celda, modificadores: Array): Boolean
-    + {abstract} reemplazar(): Vehiculo
-    + {abstract} pozo()
-    + {abstract} piquete()
-    + {abstract} controlPolicial()
-}
+@enduml
 
-abstract Obstaculo {
-    + {abstract} cruzarCon(vehiculo: Vehiculo)
-}
+@startuml interface-modificador
 
-abstract Sorpresa {
-    - vehiculo: Vehiculo
-    + cruzarCon(vehiculo: Vehiculo)
-    + {abstract} activar()
+interface Modificador {
+    + {abstract} cruzarCon(jug: Jugador)
 }
 
 class Pozo {
@@ -127,28 +145,22 @@ class Piquete {
 }
 
 class Favorable {
-    + activar(): Vehiculo
+    + cruzarCon(vehiculo: Vehiculo)
 }
 
 class Desfavorable {
-    + activar(): Vehiculo
+    + cruzarCon(vehiculo: Vehiculo)
 }
 
 class CambioDeVehiculo {
-    + activar(): Vehiculo
+    + cruzarCon(vehiculo: Vehiculo)
 }
 
-
-Favorable --|> Sorpresa
-Desfavorable --|> Sorpresa
-CambioDeVehiculo -up-|> Sorpresa
-
-Pozo --|> Obstaculo
-Piquete --|> Obstaculo
-ControlPolicial -up-|> Obstaculo
-
-4x4 --|> Vehiculo
-Auto --|> Vehiculo
-Moto -up-|> Vehiculo
+Favorable ..|> Modificador
+Desfavorable .left.|> Modificador
+CambioDeVehiculo .up.|> Modificador
+Pozo .right.|> Modificador
+Piquete ..|> Modificador
+ControlPolicial .up.|> Modificador
 
 @enduml
