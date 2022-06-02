@@ -10,7 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Franco Macke** - [franmacke](https://github.com/franmacke)
 * **Alvaro Martin** - [alvaromartin47-rgb](https://github.com/alvaromartin47-rgb)
 * **Guillermina Hoffmann** - [guillehoff](https://github.com/guillehoff)
-* **Tomas Ayala** - [tomasayala] (https://github.com/tomasayala)
+* **Tomas Ayala** - [tomasayala](https://github.com/tomasayala)
 
 Corrector: **{Corrector}**
 
