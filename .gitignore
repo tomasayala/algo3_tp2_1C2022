@@ -10,3 +10,10 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 *.iml
+docs/informe/main.aux
+docs/informe/main.pdf
+docs/informe/main.fls
+docs/informe/main.log
+docs/informe/main.fdb_latexmk
+docs/informe/main.synctex.gz
+docs/informe/main.toc
