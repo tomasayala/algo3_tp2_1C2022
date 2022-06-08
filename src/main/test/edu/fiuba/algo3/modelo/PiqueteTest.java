@@ -1,19 +1,18 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PozoTest {
+class PiqueteTest {
 
     @Test
-    void modificadorPozoSeCruzaConJugador() {
-
+    void modificadorPiqueteSeCruzaConJugador() {
        /* //Arrange
-        Pozo modificadorPozo = new Pozo();
+        Piquete modificadorPiquete = new Piquete();
         Jugador jugador = new Jugador();
         //Act
-        modificadorPozo.cruzarCon(jugador);
+        modificadorPiquete.cruzarCon(jugador);
         //Assert
         assertEquals(1, jugador.movimientos());  */
     }

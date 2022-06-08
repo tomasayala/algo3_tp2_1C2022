@@ -1,5 +1,7 @@
-package edu.fiuba.algo3;
+package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Favorable;
+import edu.fiuba.algo3.modelo.Jugador;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
