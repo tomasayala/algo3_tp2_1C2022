@@ -18,7 +18,7 @@ public class Jugador {
 
     public void sorpresaFavorable() { this.movimientos = Math.round( this.movimientos * 0.8); }
 
-    public void sorprsaDesfavorable() { this.movimientos = Math.round( this.movimientos * 1.25); }
+    public void sorpresaDesfavorable() { this.movimientos = Math.round( this.movimientos * 1.25); }
 
     public void reemplazarVehiculo() { this.vehiculo = this.vehiculo.reemplazarVehiculo(); }
 

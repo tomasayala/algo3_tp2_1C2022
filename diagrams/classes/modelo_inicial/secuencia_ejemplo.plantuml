@@ -1,0 +1,135 @@
+@startuml sec-moto-atraviesa-grilla-sin-obs
+
+title Una moto atraviesa la grilla sin obstaculos\n y la cantidad de movimientos es X
+
+Actor Usuario as user
+participant "tablero:Tablero" as tablero
+participant "jugador:Jugador" as jugador
+participant "celda:Celda" as celda
+participant "calle:Calle" as calle
+participant "Direccion" as direccion
+participant "Modificador" as modificador
+
+activate tablero
+
+loop Por cada Direccion X veces
+
+    user -> tablero: mover(dir: Direccion)
+    
+    activate jugador
+    
+    tablero -> jugador: mover(dir: Direccion)
+
+    activate celda
+
+    jugador -> celda: mover(self, dir: Direccion)
+    celda -> celda: obtenerEsquinas()
+
+    loop Por cada calle
+        activate calle
+
+        celda -> calle: proximaEsquina(self)
+        calle --> celda: esquinaSiguiente: Celda
+        
+        deactivate calle
+    end
+
+    activate direccion
+
+    celda -> direccion: mover(f, c, [esquinas])
+    direccion --> celda: celdaEnSiguienteDireccion
+
+    deactivate direccion
+
+    celda -> celda: obtenerCalleConEsquinas(self, celdaEnSiguienteDireccion)
+    
+    loop Por cada calle
+        activate calle
+
+        celda -> calle: contiene(self)
+        calle --> celda: true
+        celda -> calle: contiene(celdaEnSiguienteDireccion)
+        calle --> celda: true
+
+        deactivate calle
+    end
+    
+    activate calle
+
+    celda -> calle: cruzarCon(jug: Jugador)
+    
+    activate modificador
+    
+    calle -> modificador: cruzarCon(jug: Jugador)
+
+    deactivate modificador
+    deactivate calle
+
+    celda --> jugador: celdaEnSiguienteDireccion
+    jugador --> tablero: celda = celdaEnSiguienteDireccion\nmoviemientos + 1
+
+    deactivate celda
+    deactivate jugador
+
+end
+
+
+user -> tablero: movimientos()
+
+activate jugador
+tablero -> jugador: movimientos()
+jugador --> tablero: X
+deactivate jugador
+
+tablero --> user: X
+
+deactivate tablero
+
+@enduml
+
+
+@startuml secuencia-direccion-arriba
+
+title Caso direccion arriba
+
+participant "celdaActual:Celda" as celdaA
+participant "arriba:Arriba" as arriba
+participant "esquina: Celda" as celdaB
+
+activate celdaA
+activate arriba
+
+celdaA -> arriba: mover(f, c, [esquinas])
+
+loop Por cada esquina si f < fila
+    activate celdaB
+
+    arriba -> celdaB: fila()
+    celdaB --> arriba: fila
+
+    deactivate celdaB
+end
+
+arriba --> celdaA: esquinaConFilaMayor: Celda
+
+deactivate arriba
+deactivate celdaA
+
+@enduml
+
+@startuml secuencia-modificador-nulo
+
+title Caso modificador nulo (calle vacia)
+
+participant "calle:Calle" as calle
+participant "nulo: Nulo" as nulo
+
+activate calle
+activate nulo
+
+calle -> nulo: cruzarCon(jug: Jugador)
+
+deactivate calle
+deactivate nulo
+
+@enduml
