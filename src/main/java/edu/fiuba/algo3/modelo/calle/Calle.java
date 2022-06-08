@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.calle;
 
 import java.util.ArrayList;
 
-import edu.fiuba.algo3.modelo.celda.ICelda;
 import edu.fiuba.algo3.modelo.jugador.IJugador;
 import edu.fiuba.algo3.modelo.modificador.IModificador;
 
