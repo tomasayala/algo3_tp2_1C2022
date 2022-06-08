@@ -6,6 +6,11 @@ public class Izquierda implements Direccion {
     
     @Override
     public Celda mover(Integer f, Integer c, ArrayList<Celda> esquinas) {
-        return esquinas.get(3);
+        for (Celda e : esquinas) {
+            if (e.fila() == f && e.columna() == c - 1) return e;
+        }
+
+        return null;
     }
+
 }
