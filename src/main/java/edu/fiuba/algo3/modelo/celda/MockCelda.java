@@ -6,6 +6,13 @@ import edu.fiuba.algo3.modelo.direccion.IDireccion;
 
 public class MockCelda implements ICelda{
     private ArrayList<Calle> calles;
+    private int fila;
+    private int columna;
+
+
+    public MockCelda() {
+
+    }
 
     public ArrayList<ICelda> obtenerEsquinas() {
         ArrayList<ICelda> listaCeldas = new ArrayList<ICelda>();

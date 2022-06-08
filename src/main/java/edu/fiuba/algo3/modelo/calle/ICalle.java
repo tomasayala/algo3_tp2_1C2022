@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.celda.ICelda;
 import edu.fiuba.algo3.modelo.jugador.IJugador;
 
 public interface ICalle {
-    // public void asociarCeldas(ICelda origen, ICelda fin);
+    public void asociarCeldas(ICelda nuevaCelda);
 
     public void cruzarCon(IJugador jugador);
 
