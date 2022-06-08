@@ -2,15 +2,13 @@ package edu.fiuba.algo3.modelo.generadorDeCiudad;
 
 import java.util.ArrayList;
 
-import edu.fiuba.algo3.modelo.calle.ICalle;
-import edu.fiuba.algo3.modelo.celda.ICelda;
-import edu.fiuba.algo3.modelo.celda.MockCelda;
+import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.calle.Calle;
 
 
 public class GeneradorDeCiudad {
-    private ArrayList<ICelda> celdas;
-    private ArrayList<ICalle> calles;
+    private ArrayList<Celda> celdas;
+    private ArrayList<Calle> calles;
     private int filas;
     private int columnas;
 

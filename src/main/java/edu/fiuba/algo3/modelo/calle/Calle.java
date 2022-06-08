@@ -2,33 +2,28 @@ package edu.fiuba.algo3.modelo.calle;
 
 import java.util.ArrayList;
 
-import edu.fiuba.algo3.modelo.celda.ICelda;
-import edu.fiuba.algo3.modelo.jugador.IJugador;
+import edu.fiuba.algo3.modelo.celda.Celda;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.IModificador;
 
-<<<<<<< HEAD
-public class Calle implements ICalle {
-=======
-public class Calle implements ICalle
-{
->>>>>>> 8880df329ffff2c402deb8d344da9ed0e43a1546
+public class Calle {
     private IModificador modificador;
-    private ArrayList<ICelda> celdas;
+    private ArrayList<Celda> celdas;
 
-    public void asociarCeldas(ICelda nuevaCelda) {
+    public void asociarCeldas(Celda nuevaCelda) {
         this.celdas.add(nuevaCelda);
     }
 
-    public void cruzarCon(IJugador jugador) {
+    public void cruzarCon(Jugador jugador) {
         this.modificador.cruzarCon(jugador);
     }
 
-    public ICelda proximaEsquina(ICelda esquinaActual) {
+    public Celda siguienteEsquina(Celda esquinaActual) {
         // hay que cambiar
         return this.celdas.get(0);
     }
 
-    public boolean contiene(ICelda celda) {
+    public boolean contiene(Celda celda) {
         return this.celdas.contains(celda);
     }
 }

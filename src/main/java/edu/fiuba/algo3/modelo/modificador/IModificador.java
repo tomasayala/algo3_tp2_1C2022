@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.modificador;
 
-import edu.fiuba.algo3.modelo.jugador.IJugador;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public interface IModificador {
-    public void cruzarCon(IJugador jugador);
+    public void cruzarCon(Jugador jugador);
 }

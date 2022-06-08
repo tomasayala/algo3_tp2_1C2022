@@ -1,8 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero;
 
 import org.junit.jupiter.api.Test;
-
-import edu.fiuba.algo3.modelo.direccion.MockArriba;
 import edu.fiuba.algo3.modelo.tablero.Tablero;
 
 public class TableroTest {

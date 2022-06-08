@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo.tablero;
 
-import edu.fiuba.algo3.modelo.celda.ICelda;
-import edu.fiuba.algo3.modelo.celda.MockCelda;
-import edu.fiuba.algo3.modelo.direccion.IDireccion;
-import edu.fiuba.algo3.modelo.jugador.IJugador;
+import edu.fiuba.algo3.modelo.celda.Celda;
+import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public class Tablero {
-    private IJugador jugador;
+    private Jugador jugador;
     // private ICelda[][] celdas;
 
     public Tablero(int filas, int columnas) {
@@ -19,7 +18,7 @@ public class Tablero {
         // } 
     }
 
-    public void mover(IDireccion direccion) {
-        jugador.mover(this.jugador, direccion);
+    public void mover(Direccion direccion) {
+        // jugador.mover(this.jugador, direccion);
     }
 }
