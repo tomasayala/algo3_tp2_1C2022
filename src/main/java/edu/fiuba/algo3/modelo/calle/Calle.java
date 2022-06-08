@@ -6,7 +6,12 @@ import edu.fiuba.algo3.modelo.celda.ICelda;
 import edu.fiuba.algo3.modelo.jugador.IJugador;
 import edu.fiuba.algo3.modelo.modificador.IModificador;
 
+<<<<<<< HEAD
 public class Calle implements ICalle {
+=======
+public class Calle implements ICalle
+{
+>>>>>>> 8880df329ffff2c402deb8d344da9ed0e43a1546
     private IModificador modificador;
     private ArrayList<ICelda> celdas;
 
