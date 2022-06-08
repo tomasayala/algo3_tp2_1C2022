@@ -1,16 +1,20 @@
 package edu.fiuba.algo3.modelo.celda;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+
+import org.junit.jupiter.api.Test;
+
 import edu.fiuba.algo3.modelo.calle.Calle;
-import edu.fiuba.algo3.modelo.direccion.Arriba;
 import edu.fiuba.algo3.modelo.direccion.Abajo;
+import edu.fiuba.algo3.modelo.direccion.Arriba;
 import edu.fiuba.algo3.modelo.direccion.Derecha;
 import edu.fiuba.algo3.modelo.direccion.Izquierda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-
-import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.*;
-import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CeldaTest {
 

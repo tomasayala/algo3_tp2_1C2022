@@ -1,10 +1,12 @@
 package edu.fiuba.algo3.modelo.direccion;
 
-import edu.fiuba.algo3.modelo.celda.Celda;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import edu.fiuba.algo3.modelo.celda.Celda;
 
 public class DireccionTest {
     

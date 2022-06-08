@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo.celda;
 
 import java.util.ArrayList;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.direccion.Direccion;
+
 import edu.fiuba.algo3.modelo.calle.Calle;
+import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public class Celda {
     
