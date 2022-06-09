@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.vehiculos;
 
 import java.util.Random;
+import edu.fiuba.algo3.modelo.vehiculos.Jugador;
+
 
 public class Moto implements IVehiculo{
     private int probabilidadControl;
@@ -16,20 +18,20 @@ public class Moto implements IVehiculo{
     }
 
     @Override
-    public int pozo() {
-        return 3;
+    public void pozo(Jugador jugador) {
+        jugador.sumarMovimientos(3);
     }
 
     @Override
-    public int piquete() {
-        return 2;
+    public void piquete(Jugador jugador) {
+        //return 2;
     }
 
     @Override
-    public int controlPolicial() {
+    public void controlPolicial(Jugador jugador) {
         int penalizacion = 0;
         Random random = new Random();
         if(random.nextInt(10) <= this.probabilidadControl) { penalizacion = 3;}
-        return penalizacion;
+        jugador.sumarMovimientos(penalizacion);
     }
 }
