@@ -8,6 +8,7 @@ public class CambioDeVehiculo implements Modificador {
     public void cruzarCon(Jugador jugador) {
 
         jugador.reemplazarVehiculo();
+        jugador.sumarMovimientos(1);
 
     }
 }
