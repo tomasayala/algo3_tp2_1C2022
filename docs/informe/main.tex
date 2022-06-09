@@ -50,9 +50,15 @@
 \section{Introducción}\label{sec:intro}
 
 \section{Supuestos}\label{sec:supuestos}
-% Deberá contener explicaciones de cada uno de los supuestos que el alumno haya tenido que adoptar a partir de situaciones que no estén contempladas en la especificación.
+  \begin{itemize}
+    \item Una calle puede tener más de un modificador.
+    \item Se le debe indicar al jugador donde inicia
 
+  \end{itemize}
 \section{Diagramas de clase}\label{sec:diagramasdeclase}
+
+Este es el esquema general de la aplicación. Más adelante, hay un esquema de secuencia donde se puede ver como interactuan entre si los objetos.
+
 
 \begin{figure}[H]
   \centering
@@ -90,13 +96,13 @@ Explicación del modelo inicial
 
 
 
-\section{Excepciones}\label{sec:excepciones}
-% Explicación de cada una de las excepciones creadas y con qué fin fueron creadas.
+% \section{Excepciones}\label{sec:excepciones}
+% % Explicación de cada una de las excepciones creadas y con qué fin fueron creadas.
 
-\begin{description}
-\item[Exception] Explicacion excepcion 1
-\item[Excepcion] Explicacion excepcion 2
-\end{description}
+% \begin{description}
+% \item[Exception] Explicacion excepcion 1
+% \item[Excepcion] Explicacion excepcion 2
+% \end{description}
 
 \section{Diagramas de secuencia}\label{sec:diagramasdesecuencia}
 % Mostrar las secuencias interesantes que hayan implementado. Pueden agregar texto para explicar si algo no queda claro.
@@ -109,7 +115,7 @@ Introducción
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{diagramas/SecuenciaUnaMotoCruzaUnPozoYEsPenalizado.png}
-  \caption{\label{fig:class01}Explicacion diagrama}
+  \caption{\label{fig:class01}Describe el caso donde una moto se cruza un pozo y recibe una penalización de 3 movimientos}
 \end{figure}
 
 \subsubsection[]{Un auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos}
@@ -117,7 +123,7 @@ Introducción
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{diagramas/SecuenciaAutoCruzaUnPozoYEsPenalizado.png}
-  \caption{\label{fig:class01}Explicacion diagrama}
+  \caption{\label{fig:class01} Describe el caso donde un auto atraviesa la ciudad y se encuentra un pozo, recibiendo una penalización de 3 movimientos}
 \end{figure}
 
 
@@ -126,7 +132,7 @@ Introducción
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{diagramas/SecuenciaUnaCamionetaCruzaUnPozoYNoEsPenalizado.png}
-  \caption{\label{fig:class01}Explicacion diagrama}
+  \caption{\label{fig:class01} Acá se ve el caso donde una camioneta se cruza con un pozo. No se ve afectado la cantidad de movimientos}
 \end{figure}
 
 
