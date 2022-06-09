@@ -2,24 +2,31 @@ package edu.fiuba.algo3.modelo.calle;
 
 import java.util.ArrayList;
 
+import edu.fiuba.algo3.modelo.Modificador;
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.IModificador;
 
 public class Calle {
-    private IModificador modificador;
+    private ArrayList<Modificador> modificadores;
     private ArrayList<Celda> celdas;
 
     public Calle() {
         this.celdas = new ArrayList<Celda>();
+        this.modificadores = new ArrayList<Modificador>();
     }
 
     public void agregarCelda(Celda celda) {
         celdas.add(celda);
     }
 
+    public void agregarModificador(Modificador modificador) {
+        this.modificadores.add(modificador);
+    }
+
     public void cruzarCon(Jugador jugador) {
-        this.modificador.cruzarCon(jugador);
+        for (Modificador mod : this.modificadores) {
+            mod.cruzarCon(jugador);
+        }
     }
 
     public Celda siguienteEsquina(Celda esquinaActual) {
@@ -35,5 +42,20 @@ public class Calle {
 
     public void asociarCelda(Celda celda) {
         celdas.add(celda);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Calle)) {
+            return false;
+        }
+        Calle c = (Calle) obj;
+        
+        for (Celda celda : c.celdas) {
+            if (!this.celdas.contains(celda)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

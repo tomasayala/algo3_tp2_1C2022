@@ -27,9 +27,11 @@ public class Celda {
     }
 
     public void agregarCalle(Calle calle) {
-        if (this.calles.size() >= 4) throw new Error();
+        if (this.calles.size() > 4) throw new Error();
 
-        this.calles.add(calle);
+        if (!this.calles.contains(calle)) {
+            this.calles.add(calle);
+        }
     }
 
     private ArrayList<Celda> obtenerEsquinas() {
@@ -55,6 +57,12 @@ public class Celda {
         
         Celda sigCelda = dir.mover(f, c, esquinas);
         Calle sigCalle = this.obtenerCalleDeEsquina(sigCelda);
+
+        // Celda sigCelda = new Celda(0, 1);
+        // Calle calle = new Calle();
+        // calle.agregarCelda(new Celda(0,2));
+        // sigCelda.agregarCalle(calle);
+        // Calle sigCalle = this.obtenerCalleDeEsquina(sigCelda);
         
         sigCalle.cruzarCon(jug);
 

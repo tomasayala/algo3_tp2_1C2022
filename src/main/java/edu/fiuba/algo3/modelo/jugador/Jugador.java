@@ -15,12 +15,21 @@ public class Jugador {
         this.celdaActual = celdaInicial;
     }
 
+    public Jugador(IVehiculo unVehiculo) {
+        this.vehiculo = unVehiculo;
+        this.movimientos = 0;
+    }
+
     public IVehiculo getVehiculo() {
         return vehiculo;
     }
 
     public Celda getPosicion() {
         return this.celdaActual;
+    }
+
+    public void setPosicion(Celda celda) {
+        this.celdaActual = celda;
     }
 
     public void sorpresaFavorable() {

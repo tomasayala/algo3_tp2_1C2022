@@ -14,7 +14,8 @@ public class Tablero {
     }
 
     public void iniciarEn(Celda celda) {
-        // this.jugador.setPosicion(celda);
+        Celda inicio = this.generador.buscarCelda(celda);
+        this.jugador.setPosicion(inicio);
     }
 
     public void asociarJudador(Jugador jugador) {
