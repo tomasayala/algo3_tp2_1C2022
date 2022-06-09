@@ -2,9 +2,10 @@ package edu.fiuba.algo3.modelo.calle;
 
 import java.util.ArrayList;
 
-import edu.fiuba.algo3.modelo.Modificador;
+
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.modificadores.Modificador;
 
 public class Calle {
     private ArrayList<Modificador> modificadores;

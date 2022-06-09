@@ -5,7 +5,7 @@ import java.util.ArrayList;
 // import java.util.Set;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
-import edu.fiuba.algo3.modelo.Modificador;
+
 import edu.fiuba.algo3.modelo.calle.Calle;
 
 public class GeneradorDeCiudad {
