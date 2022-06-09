@@ -10,8 +10,8 @@ public class Calle {
     private IModificador modificador;
     private ArrayList<Celda> celdas;
 
-    public void asociarCeldas(Celda nuevaCelda) {
-        this.celdas.add(nuevaCelda);
+    public void agregarCelda(Celda celda) {
+        celdas.add(celda);
     }
 
     public void cruzarCon(Jugador jugador) {
@@ -19,7 +19,7 @@ public class Calle {
     }
 
     public Celda siguienteEsquina(Celda esquinaActual) {
-        // hay que cambiar
+    //    FALTA HACER
         return this.celdas.get(0);
     }
 

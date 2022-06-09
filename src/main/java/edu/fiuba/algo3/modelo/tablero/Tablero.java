@@ -2,20 +2,15 @@ package edu.fiuba.algo3.modelo.tablero;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.generadorDeCiudad.GeneradorDeCiudad;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public class Tablero {
     private Jugador jugador;
-    // private ICelda[][] celdas;
+    private GeneradorDeCiudad generador;
 
     public Tablero(int filas, int columnas) {
-        // this.celdas = new ICelda[filas][columnas];
-        
-        // for (int i = 0; i < filas; i++) {
-        //     for (int j = 0; j < columnas; j++) {
-        //         this.celdas[i][j] = new MockCelda();
-        //     }
-        // } 
+        this.generador = new GeneradorDeCiudad(filas, columnas);
     }
 
     public void iniciarEn(Celda celda) {
@@ -27,6 +22,10 @@ public class Tablero {
     }
 
     public void mover(Direccion direccion) {
-        // jugador.mover(this.jugador, direccion);
+        jugador.mover(direccion);
+    }
+
+    public Celda obtenerPosicion() {
+        return this.jugador.getPosicion();
     }
 }

@@ -19,6 +19,10 @@ public class Jugador {
         return vehiculo;
     }
 
+    public Celda getPosicion() {
+        return this.celdaActual;
+    }
+
     public void sorpresaFavorable() {
         this.movimientos = Math.round(this.movimientos * 0.8);
     }
@@ -41,6 +45,5 @@ public class Jugador {
 
     public void mover(Direccion dir) {
         this.celdaActual = this.celdaActual.mover(this, dir);
-        this.movimientos++;
     }
 }

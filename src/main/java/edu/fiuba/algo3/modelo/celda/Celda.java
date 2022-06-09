@@ -61,5 +61,12 @@ public class Celda {
         return sigCelda;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Celda)) {
+            return false;
+        }
+        Celda c = (Celda) obj;
+        return (this.fila() == c.fila() && this.columna() == c.columna());
+    }
 }
