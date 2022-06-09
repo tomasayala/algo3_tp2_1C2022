@@ -1,4 +1,4 @@
-@startuml sec-moto-atraviesa-grilla-sin-obs
+@startuml SecuenciaUnaMotoCruzaLaGrillaSinObstaculos
 
 title Una moto atraviesa la grilla sin obstaculos\n y la cantidad de movimientos es X
 

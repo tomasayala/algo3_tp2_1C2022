@@ -1,4 +1,4 @@
-@startuml sec-moto-atraviesa-grilla-sin-obs
+@startuml SecuenciaMotoCambiaVehiculo
 ' Caso de uso 
 ' Una moto atraviesa la ciudad y se encuentra con un CambioDeVehiculo. Se cambia la moto por un auto.
 

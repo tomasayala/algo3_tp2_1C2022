@@ -1,10 +1,8 @@
-
-
-@startuml sec-moto-atraviesa-grilla-sin-obs
+@startuml SecuenciaAutoCruzaUnPozoYEsPenalizado
 ' Caso de uso 
-' Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
+' Un auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizado en tres movimientos.
 
-title Una moto atraviesa la ciudad y se encuentra con un Pozo. Es penalizada en tres movimientos.
+title Un auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizado en tres movimientos.
 
 Actor Usuario as user
 participant "tablero:Tablero" as tablero
@@ -12,9 +10,13 @@ participant "jugador:Jugador" as jugador
 participant "celda:Celda" as celda
 participant "calle:Calle" as calle
 participant "pozo:Pozo" as pozo
-participant "moto:Moto" as moto
+participant "auto:Auto" as auto
+
+' participant "Direccion" as direccion
+' participant "Modificador" as modificador
 
 activate tablero
+
 
 user -> tablero: mover(dir: Direccion)
 
@@ -34,20 +36,22 @@ deactivate celda
 activate pozo
 
 calle -> pozo: cruzarCon(jug: Jugador)
+
 deactivate calle
+
 pozo -> jugador: obtenerVehiculo()
 
-jugador --> pozo: moto: Moto
+jugador --> pozo: auto: Auto
 
-activate moto
+activate auto
 
-pozo -> moto: pozo(jugador: Jugador)
+pozo -> auto: pozo(jugador: Jugador)
 
 deactivate pozo
 
-moto -> jugador: sumarMovimentos(3)
+auto -> jugador: sumarMovimentos(3)
 
-deactivate moto
+deactivate auto
 deactivate calle
 deactivate celda
 
