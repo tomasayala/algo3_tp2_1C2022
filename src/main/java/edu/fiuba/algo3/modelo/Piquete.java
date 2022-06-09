@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Modificador;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 
 public class Piquete implements Modificador {
 
