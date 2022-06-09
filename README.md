@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Guillermina Hoffmann** - [guillehoff](https://github.com/guillehoff)
 * **Tomas Ayala** - [tomasayala](https://github.com/tomasayala)
 
-Corrector: **{Corrector}**
+Corrector: **{Thiago Kovnat}**
 
 ## Aplicación
 

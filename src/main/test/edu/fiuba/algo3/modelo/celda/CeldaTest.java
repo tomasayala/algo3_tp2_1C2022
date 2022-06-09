@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 
+import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.calle.Calle;
@@ -75,7 +76,7 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
         
-        Celda celdaMovida = celda.mover(new Jugador(), new Arriba());
+        Celda celdaMovida = celda.mover(new Jugador(new Moto(), celda), new Arriba());
         
         assertEquals(0, celdaMovida.fila());
         assertEquals(1, celdaMovida.columna());
@@ -88,7 +89,7 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
 
-        Celda celdaMovida = celda.mover(new Jugador(), new Abajo());
+        Celda celdaMovida = celda.mover(new Jugador(new Moto(), celda), new Abajo());
 
         assertEquals(2, celdaMovida.fila());
         assertEquals(1, celdaMovida.columna());
@@ -101,7 +102,7 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
 
-        Celda celdaMovida = celda.mover(new Jugador(), new Derecha());
+        Celda celdaMovida = celda.mover(new Jugador(new Moto(), celda), new Derecha());
 
         assertEquals(2, celdaMovida.columna());
         assertEquals(1, celdaMovida.fila());
@@ -114,7 +115,7 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
         
-        Celda celdaMovida = celda.mover(new Jugador(), new Izquierda());
+        Celda celdaMovida = celda.mover(new Jugador(new Moto (), celda), new Izquierda());
 
         assertEquals(0, celdaMovida.columna());
         assertEquals(1, celdaMovida.fila());

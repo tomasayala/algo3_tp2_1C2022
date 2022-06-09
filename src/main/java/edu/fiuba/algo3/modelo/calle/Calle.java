@@ -1,20 +1,39 @@
 package edu.fiuba.algo3.modelo.calle;
 
+import java.util.ArrayList;
+
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.modificador.IModificador;
 
 public class Calle {
-    
-    public Calle(Integer f, Integer c) {}
+    private IModificador modificador;
+    private ArrayList<Celda> celdas;
 
-    public void cruzarCon(Jugador jug) {}
+    public Calle() {
+        this.celdas = new ArrayList<Celda>();
+    }
 
-    public Celda siguienteEsquina(Celda inicio) {
-        return null;
+    public void agregarCelda(Celda celda) {
+        celdas.add(celda);
+    }
+
+    public void cruzarCon(Jugador jugador) {
+        this.modificador.cruzarCon(jugador);
+    }
+
+    public Celda siguienteEsquina(Celda esquinaActual) {
+        // Solo funciona para 2 celdas
+        ArrayList<Celda> buscador = celdas;
+        buscador.remove(esquinaActual);
+        return this.celdas.get(0);
     }
 
     public boolean contiene(Celda celda) {
-        return false;
+        return this.celdas.contains(celda);
     }
-    
+
+    public void asociarCelda(Celda celda) {
+        celdas.add(celda);
+    }
 }
