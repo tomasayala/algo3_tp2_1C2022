@@ -23,6 +23,9 @@ public class Tablero {
     }
 
     public void mover(Direccion direccion) {
+        if (this.jugador.equals(null)) {
+            throw new RuntimeException();
+        }
         jugador.mover(direccion);
     }
 

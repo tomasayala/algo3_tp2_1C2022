@@ -42,13 +42,24 @@ public class TableroTest {
         assertEquals(tablero.obtenerPosicion(), new Celda(1, 0));
     }
 
-    // @Test
-    // public void moverElJugadorHaciaLaArribaDevuelveError() {
-    //     Tablero t = new Tablero(5, 5);
-    //     Moto m = new Moto();
-    //     Jugador j = new Jugador(m);
+    
+    @Test
+    public void noAsociarUnJugadorYMoverDevuelveError() {
+        Tablero tablero = new Tablero(5, 5);
+        Celda celda = new Celda(0,0);
 
-    //     t.asociarJudador(j);
-    //     t.iniciarEn(new Celda(0, 0));
-    // }
+        assertThrows(RuntimeException.class, () ->tablero.iniciarEn(celda));
+    }
+
+    @Test
+    public void moverElJugadorFueraDeLimiteDevuelveError() {
+        Tablero tablero = new Tablero(5, 5);
+        IVehiculo vehiculo = mock(IVehiculo.class);
+        Jugador jugador = new Jugador(vehiculo);
+
+        tablero.asociarJudador(jugador);
+        tablero.iniciarEn(new Celda(0, 0));
+
+        assertThrows(Error.class, () -> tablero.mover(new Arriba()));
+    }
 }
