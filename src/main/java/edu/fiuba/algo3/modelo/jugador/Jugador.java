@@ -27,6 +27,10 @@ public class Jugador {
         return this.celdaActual;
     }
 
+    public void setPosicion(Celda celda) {
+        this.celdaActual = celda;
+    }
+
     public void sorpresaFavorable() {
         this.movimientos = Math.round(this.movimientos * 0.8);
     }

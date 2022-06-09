@@ -27,9 +27,11 @@ public class Celda {
     }
 
     public void agregarCalle(Calle calle) {
-        if (this.calles.size() >= 4) throw new Error();
+        if (this.calles.size() > 4) throw new Error();
 
-        this.calles.add(calle);
+        if (!this.calles.contains(calle)) {
+            this.calles.add(calle);
+        }
     }
 
     private ArrayList<Celda> obtenerEsquinas() {

@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.modificador.Pozo;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
-import edu.fiuba.algo3.modelo.modificadores.Pozo;
 
 public class CalleTest {
     

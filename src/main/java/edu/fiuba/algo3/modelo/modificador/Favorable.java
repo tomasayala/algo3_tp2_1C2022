@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.modificadores;
+package edu.fiuba.algo3.modelo.modificador;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 
@@ -8,6 +8,6 @@ public class Favorable implements Modificador {
     public void cruzarCon(Jugador jugador) {
 
         jugador.sorpresaFavorable();
-
+        jugador.sumarMovimientos(1);
     }
 }

@@ -8,14 +8,14 @@ import edu.fiuba.algo3.modelo.calle.Calle;
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Pozo;
 import edu.fiuba.algo3.modelo.tablero.Tablero;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.Camioneta4x4;
 import edu.fiuba.algo3.modelo.direccion.Derecha;
-import edu.fiuba.algo3.modelo.modificadores.Pozo;
 
 public class PrimerEntrega {
     Tablero tablero = new Tablero(10, 10);
@@ -27,7 +27,7 @@ public class PrimerEntrega {
     public Jugador iniciarConfig(IVehiculo vehiculo, Modificador modificador) {
         Jugador jugador = new Jugador(vehiculo);
         
-        this.tablero.asociarJugador(jugador);
+        this.tablero.agregarJugador(jugador);
         this.tablero.iniciarEn(celdaInicial);
         
         Calle calle = new Calle(this.celdaInicial, this.celdaFinal, modificador);

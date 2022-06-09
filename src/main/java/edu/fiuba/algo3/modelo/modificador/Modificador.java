@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.modificadores;
+package edu.fiuba.algo3.modelo.modificador;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 

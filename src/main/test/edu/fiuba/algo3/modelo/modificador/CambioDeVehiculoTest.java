@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.modificador;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.CambioDeVehiculo;
+import edu.fiuba.algo3.modelo.modificador.CambioDeVehiculo;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.Camioneta4x4;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;

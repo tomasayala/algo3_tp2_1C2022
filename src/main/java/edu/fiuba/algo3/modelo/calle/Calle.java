@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Modificador;
 
 public class Calle {
+
     private Modificador modificador;
     private ArrayList<Celda> celdas;
 
@@ -23,8 +24,10 @@ public class Calle {
 
     public Celda siguienteEsquina(Celda esquinaActual) {
         // Solo funciona para 2 celdas
+
         ArrayList<Celda> buscador = celdas;
         buscador.remove(esquinaActual);
+
         return this.celdas.get(0);
     }
 
@@ -32,7 +35,23 @@ public class Calle {
         return this.celdas.contains(celda);
     }
 
-    public void asociarCelda(Celda celda) {
+    public void agregarCelda(Celda celda) {
         celdas.add(celda);
     }
+
+    // @Override
+    // public boolean equals(Object obj) {
+    // if (!(obj instanceof Calle)) {
+    // return false;
+    // }
+    // Calle c = (Calle) obj;
+
+    // for (Celda celda : c.celdas) {
+    // if (!this.celdas.contains(celda)) {
+    // return false;
+    // }
+    // }
+    // return true;
+    // }
+    
 }

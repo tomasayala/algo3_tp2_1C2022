@@ -1,0 +1,65 @@
+ @startuml SecuenciaAutoCambiaVehiculo
+' Caso de uso 
+' Un auto atraviesa la ciudad y se encuentra con un CambioDeVehiculo. Se cambia el auto.por una camioneta.
+
+title Un auto atraviesa la ciudad y se encuentra con un CambioDeVehiculo. Se cambia el auto por una camioneta
+
+Actor Usuario as user
+participant "tablero:Tablero" as tablero
+participant "jugador:Jugador" as jugador
+participant "celda:Celda" as celda
+participant "calle:Calle" as calle
+participant ":CambioDeVehiculo" as cambioDeVehiculo
+participant "auto:Vehiculo" as vehiculo
+
+activate tablero
+
+user -> tablero: mover(dir: Direccion)
+
+activate jugador
+
+tablero -> jugador: mover(dir: Direccion)
+
+activate celda
+
+jugador -> celda: mover(self, dir: Direccion)
+
+activate calle
+
+celda -> calle: cruzarCon(jug: Jugador)
+
+deactivate celda
+
+activate cambioDeVehiculo
+
+calle -> cambioDeVehiculo: cruzarCon(jug: Jugador)
+
+deactivate calle
+
+cambioDeVehiculo -> jugador: reemplazarVehiculo()
+
+deactivate cambioDeVehiculo
+activate vehiculo
+
+jugador -> vehiculo : reemplazarVehiculo()
+
+vehiculo --> jugador : camioneta: Camioneta4X4 
+
+vehiculo -> jugador: sumarMovimiento(1)
+
+deactivate vehiculo
+
+deactivate celda
+
+user -> tablero: movimientos()
+
+tablero -> jugador: movimientos()
+jugador --> tablero: X 
+deactivate jugador
+
+tablero --> user: X
+
+deactivate tablero
+
+@enduml
+
