@@ -37,9 +37,9 @@ public class TableroTest {
         tablero.asociarJudador(jugador);
         tablero.iniciarEn(new Celda(0, 0));
 
-        tablero.mover(new Abajo());
+        tablero.mover(new Derecha());
 
-        assertEquals(tablero.obtenerPosicion(), new Celda(1, 0));
+        assertEquals(tablero.obtenerPosicion(), new Celda(0, 1));
     }
 
     
@@ -48,7 +48,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(5, 5);
         Celda celda = new Celda(0,0);
 
-        assertThrows(RuntimeException.class, () ->tablero.iniciarEn(celda));
+        assertThrows(RuntimeException.class, () -> tablero.iniciarEn(celda));
     }
 
     @Test
