@@ -8,7 +8,6 @@ public class Piquete implements Modificador {
     public void cruzarCon(Jugador jugador) {
 
         jugador.getVehiculo().piquete(jugador);
-        jugador.sumarMovimientos(1);
 
     }
 }

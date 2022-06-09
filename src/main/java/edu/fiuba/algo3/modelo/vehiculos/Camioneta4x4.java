@@ -24,7 +24,7 @@ public class Camioneta4x4 implements IVehiculo{
     public void pozo(Jugador jugador) {
         int penalizacion = 0;
         this.pozosAtravezados ++;
-        if(pozosAtravezados < 3){ penalizacion = 3;}
+        if(pozosAtravezados > 3){ penalizacion = 2;}
         jugador.sumarMovimientos(penalizacion);
     }
 

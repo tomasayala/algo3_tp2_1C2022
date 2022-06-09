@@ -8,7 +8,6 @@ public class Favorable implements Modificador {
     public void cruzarCon(Jugador jugador) {
 
         jugador.sorpresaFavorable();
-        jugador.sumarMovimientos(1);
 
     }
 }
