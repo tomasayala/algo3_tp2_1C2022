@@ -18,6 +18,14 @@ public class Tablero {
         // } 
     }
 
+    public void iniciarEn(Celda celda) {
+        // this.jugador.setPosicion(celda);
+    }
+
+    public void asociarJudador(Jugador jugador) {
+        this.jugador = jugador;
+    }
+
     public void mover(Direccion direccion) {
         // jugador.mover(this.jugador, direccion);
     }
