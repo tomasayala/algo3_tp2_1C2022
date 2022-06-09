@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.tablero;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,34 +12,34 @@ import edu.fiuba.algo3.modelo.direccion.Arriba;
 import edu.fiuba.algo3.modelo.direccion.Derecha;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.tablero.Tablero;
-import edu.fiuba.algo3.modelo.vehiculos.Moto;
+import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 
 public class TableroTest {
     @Test
     public void iniciarElJugadorEnElOrigen() {
-        Tablero t = new Tablero(5, 5);
-        Moto m = new Moto();
-        Jugador j = new Jugador(m);
+        Tablero tablero = new Tablero(5, 5);
+        IVehiculo vehiculo = mock(IVehiculo.class);
+        Jugador jugador = new Jugador(vehiculo);
 
-        t.asociarJudador(j);
-        t.iniciarEn(new Celda(0, 0));
+        tablero.asociarJudador(jugador);
+        tablero.iniciarEn(new Celda(0, 0));
 
-        assertEquals(t.obtenerPosicion(), new Celda(0, 0));
+        assertEquals(tablero.obtenerPosicion(), new Celda(0, 0));
     }
 
     @Test
     public void moverElJugadorHaciaLaDerecha() {
-        Tablero t = new Tablero(5, 5);
-        Moto m = new Moto();
-        Jugador j = new Jugador(m);
+        Tablero tablero = new Tablero(5, 5);
+        IVehiculo vehiculo = mock(IVehiculo.class);
+        Jugador jugador = new Jugador(vehiculo);
 
-        t.asociarJudador(j);
-        t.iniciarEn(new Celda(0, 0));
+        tablero.asociarJudador(jugador);
+        tablero.iniciarEn(new Celda(0, 0));
 
-        t.mover(new Abajo());
+        tablero.mover(new Abajo());
 
-        assertEquals(t.obtenerPosicion(), new Celda(1, 0));
+        assertEquals(tablero.obtenerPosicion(), new Celda(1, 0));
     }
 
     // @Test
@@ -49,7 +50,5 @@ public class TableroTest {
 
     //     t.asociarJudador(j);
     //     t.iniciarEn(new Celda(0, 0));
-        
-    //     assertThrows(t.mover(new Arriba()), new Error());
     // }
 }
