@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CambioDeVehiculoTest {
+public class CambioDeVehiculoTest {
 
     @Test
-    void modificadorCambioDeVehiculoSeCruzaConJugadorConMoto() {
+    public void modificadorCambioDeVehiculoSeCruzaConJugadorConMoto() {
 
         CambioDeVehiculo cambioDeVehiculo = new CambioDeVehiculo();
         Celda celda = new Celda(0, 0);
@@ -27,7 +27,7 @@ class CambioDeVehiculoTest {
     }
 
     @Test
-    void modificadorCambioDeVehiculoSeCruzaConJugadorConAuto() {
+    public void modificadorCambioDeVehiculoSeCruzaConJugadorConAuto() {
 
         CambioDeVehiculo cambioDeVehiculo = new CambioDeVehiculo();
         Celda celda = new Celda(0, 0);
@@ -42,7 +42,7 @@ class CambioDeVehiculoTest {
     }
 
     @Test
-    void modificadorCambioDeVehiculoSeCruzaConJugadorConCamioneta() {
+    public void modificadorCambioDeVehiculoSeCruzaConJugadorConCamioneta() {
 
         CambioDeVehiculo cambioDeVehiculo = new CambioDeVehiculo();
         Celda celda = new Celda(0, 0);

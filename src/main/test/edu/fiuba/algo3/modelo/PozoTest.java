@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PozoTest {
+public class PozoTest {
 
     @Test
-    void modificadorPozoSeCruzaConJugadorConMotoYEsPenalizadoCon3() {
+    public void modificadorPozoSeCruzaConJugadorConMotoYEsPenalizadoCon3() {
 
         Pozo pozo = new Pozo();
         Celda celda = new Celda(0, 0);
@@ -27,7 +27,7 @@ class PozoTest {
     }
 
     @Test
-    void modificadorPozoSeCruzaConJugadorConAutoYEsPenalizadoCon3(){
+    public void modificadorPozoSeCruzaConJugadorConAutoYEsPenalizadoCon3(){
 
         Pozo pozo = new Pozo();
         Celda celda = new Celda(0, 0);
@@ -40,7 +40,7 @@ class PozoTest {
     }
 
     @Test
-    void modificadorPozoSeCruzaConJugadorConCamionetaYNoEsPenalizadoPorPrimeraVez(){
+    public void modificadorPozoSeCruzaConJugadorConCamionetaYNoEsPenalizadoPorPrimeraVez(){
 
         Pozo pozo = new Pozo();
         Celda celda = new Celda(0, 0);
@@ -54,7 +54,7 @@ class PozoTest {
     }
 
     @Test
-    void modificadorPozoSeCruzaConJugadorConCamionetaYEsPenalizadoCon2(){
+    public void modificadorPozoSeCruzaConJugadorConCamionetaYEsPenalizadoCon2(){
 
         Pozo pozo = new Pozo();
         Celda celda = new Celda(0, 0);

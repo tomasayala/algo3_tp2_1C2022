@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NuloTest {
+public class NuloTest {
 
     @Test
-    void modificadorNuloSeCruzaConJugadorConMotoYSumaUnMovimiento() {
+    public void modificadorNuloSeCruzaConJugadorConMotoYSumaUnMovimiento() {
 
         Nulo nulo = new Nulo();
         Celda celda = new Celda(0, 0);
@@ -27,7 +27,7 @@ class NuloTest {
     }
 
     @Test
-    void modificadorNuloSeCruzaConJugadorConAutoYSumaUnMovimiento() {
+    public void modificadorNuloSeCruzaConJugadorConAutoYSumaUnMovimiento() {
 
         Nulo nulo = new Nulo();
         Celda celda = new Celda(0, 0);
@@ -41,7 +41,7 @@ class NuloTest {
     }
 
     @Test
-    void modificadorNuloSeCruzaConJugadorConCamionetaYSumaUnMovimiento() {
+    public void modificadorNuloSeCruzaConJugadorConCamionetaYSumaUnMovimiento() {
 
         Nulo nulo = new Nulo();
         Celda celda = new Celda(0, 0);
