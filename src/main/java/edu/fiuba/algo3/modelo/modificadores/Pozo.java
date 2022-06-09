@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.modificadores;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificadores.Modificador;
 
 public class Pozo implements Modificador {
 

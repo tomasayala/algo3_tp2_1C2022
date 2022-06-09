@@ -9,10 +9,14 @@ public class Jugador {
     private long movimientos;
     private Celda celdaActual;
 
-    public Jugador(IVehiculo unVehiculo, Celda celdaInicial) {
+    public Jugador(IVehiculo unVehiculo) {
         this.vehiculo = unVehiculo;
         this.movimientos = 0;
-        this.celdaActual = celdaInicial;
+        this.celdaActual = null;
+    }
+
+    public void asignarCeldaInicial(Celda unaCelda) {
+        this.celdaActual = unaCelda;
     }
 
     public IVehiculo getVehiculo() {

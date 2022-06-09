@@ -4,18 +4,17 @@ import java.util.ArrayList;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.modificador.IModificador;
+import edu.fiuba.algo3.modelo.modificadores.Modificador;
 
 public class Calle {
-    private IModificador modificador;
+    private Modificador modificador;
     private ArrayList<Celda> celdas;
 
-    public Calle() {
+    public Calle(Celda esq1, Celda esq2, Modificador modificador) {
         this.celdas = new ArrayList<Celda>();
-    }
-
-    public void agregarCelda(Celda celda) {
-        celdas.add(celda);
+        this.celdas.add(esq1);
+        this.celdas.add(esq2);
+        this.modificador = modificador;
     }
 
     public void cruzarCon(Jugador jugador) {

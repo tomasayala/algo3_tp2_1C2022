@@ -14,15 +14,15 @@ public class Tablero {
     }
 
     public void iniciarEn(Celda celda) {
-        // this.jugador.setPosicion(celda);
+        this.jugador.asignarCeldaInicial(celda);
     }
 
-    public void asociarJudador(Jugador jugador) {
+    public void asociarJugador(Jugador jugador) {
         this.jugador = jugador;
     }
 
     public void mover(Direccion direccion) {
-        jugador.mover(direccion);
+        this.jugador.mover(direccion);
     }
 
     public Celda obtenerPosicion() {

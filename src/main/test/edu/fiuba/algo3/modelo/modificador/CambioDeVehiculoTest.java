@@ -19,7 +19,8 @@ public class CambioDeVehiculoTest {
         Celda celda = new Celda(0, 0);
         Moto moto = new Moto();
         Auto auto = new Auto();
-        Jugador jugador = new Jugador(moto, celda);
+        Jugador jugador = new Jugador(moto);
+        jugador.asignarCeldaInicial(celda);
 
         cambioDeVehiculo.cruzarCon(jugador);
 
@@ -34,7 +35,8 @@ public class CambioDeVehiculoTest {
         Celda celda = new Celda(0, 0);
         Auto auto = new Auto();
         Camioneta4x4 camioneta = new Camioneta4x4();
-        Jugador jugador = new Jugador(auto, celda);
+        Jugador jugador = new Jugador(auto);
+        jugador.asignarCeldaInicial(celda);
 
         cambioDeVehiculo.cruzarCon(jugador);
 
@@ -49,7 +51,8 @@ public class CambioDeVehiculoTest {
         Celda celda = new Celda(0, 0);
         Camioneta4x4 camioneta = new Camioneta4x4();
         Moto moto = new Moto();
-        Jugador jugador = new Jugador(camioneta, celda);
+        Jugador jugador = new Jugador(camioneta);
+        jugador.asignarCeldaInicial(celda);
 
         cambioDeVehiculo.cruzarCon(jugador);
 

@@ -76,7 +76,10 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
         
-        Celda celdaMovida = celda.mover(new Jugador(new Moto(), celda), new Arriba());
+        Jugador jugador = new Jugador(new Moto());
+        jugador.asignarCeldaInicial(celda);
+        
+        Celda celdaMovida = celda.mover(jugador, new Arriba());
         
         assertEquals(0, celdaMovida.fila());
         assertEquals(1, celdaMovida.columna());
@@ -89,7 +92,10 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
 
-        Celda celdaMovida = celda.mover(new Jugador(new Moto(), celda), new Abajo());
+        Jugador jugador = new Jugador(new Moto());
+        jugador.asignarCeldaInicial(celda);
+
+        Celda celdaMovida = celda.mover(jugador, new Abajo());
 
         assertEquals(2, celdaMovida.fila());
         assertEquals(1, celdaMovida.columna());
@@ -102,7 +108,10 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
 
-        Celda celdaMovida = celda.mover(new Jugador(new Moto(), celda), new Derecha());
+        Jugador jugador = new Jugador(new Moto());
+        jugador.asignarCeldaInicial(celda);
+
+        Celda celdaMovida = celda.mover(jugador, new Derecha());
 
         assertEquals(2, celdaMovida.columna());
         assertEquals(1, celdaMovida.fila());
@@ -115,7 +124,9 @@ public class CeldaTest {
         this.mockearCeldas();
         this.agregarCallesAleatoriamente(celda);
         
-        Celda celdaMovida = celda.mover(new Jugador(new Moto (), celda), new Izquierda());
+        Jugador jugador = new Jugador(new Moto());
+        jugador.asignarCeldaInicial(celda);
+        Celda celdaMovida = celda.mover(jugador, new Izquierda());
 
         assertEquals(0, celdaMovida.columna());
         assertEquals(1, celdaMovida.fila());
