@@ -1,0 +1,28 @@
+@startuml interface-direccion
+
+interface Direccion {
+    + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Arriba {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Abajo {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Derecha {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+class Izquierda {
+    + mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+Arriba ..|> Direccion
+Abajo ..|> Direccion
+Derecha .up.|> Direccion
+Izquierda .up.|> Direccion
+
+@enduml

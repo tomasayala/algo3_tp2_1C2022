@@ -1,0 +1,36 @@
+
+@startuml interface-vehiculo
+
+interface Vehiculo {
+    + {abstract} reemplazar(): Vehiculo
+    + {abstract} pozo(jug: Jugador)
+    + {abstract} piquete(jug: Jugador)
+    + {abstract} controlPolicial(jug: Jugador)
+}
+
+class 4x4 { 
+    + pozo(jug: Jugador)
+    + piquete(jug: Jugador)
+    + controlPolicial(jug: Jugador)
+    + reemplazar(): Vehiculo
+}
+
+class Moto {
+    + pozo(jug: Jugador)
+    + piquete(jug: Jugador)
+    + controlPolicial(jug: Jugador)
+    + reemplazar(): Vehiculo
+}
+
+class Auto {
+    + pozo(jug: Jugador)
+    + piquete(jug: Jugador)
+    + controlPolicial(jug: Jugador)
+    + reemplazar(): Vehiculo
+}
+
+4x4 .up.|> Vehiculo
+Auto ..|> Vehiculo
+Moto ..|> Vehiculo
+
+@enduml

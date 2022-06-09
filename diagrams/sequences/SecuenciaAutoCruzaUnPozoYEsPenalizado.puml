@@ -1,0 +1,69 @@
+@startuml sec-auto-atraviesa-grilla-sin-obs
+' Caso de uso 
+' Un auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizado en tres movimientos.
+
+title Un auto atraviesa la ciudad y se encuentra con un Pozo. Es penalizado en tres movimientos.
+
+Actor Usuario as user
+participant "tablero:Tablero" as tablero
+participant "jugador:Jugador" as jugador
+participant "celda:Celda" as celda
+participant "calle:Calle" as calle
+participant "pozo:Pozo" as pozo
+participant "auto:Auto" as auto
+
+' participant "Direccion" as direccion
+' participant "Modificador" as modificador
+
+activate tablero
+
+
+user -> tablero: mover(dir: Direccion)
+
+activate jugador
+
+tablero -> jugador: mover(dir: Direccion)
+
+activate celda
+
+jugador -> celda: mover(self, dir: Direccion)
+
+activate calle
+
+celda -> calle: cruzarCon(jug: Jugador)
+
+deactivate celda
+activate pozo
+
+calle -> pozo: cruzarCon(jug: Jugador)
+
+deactivate calle
+
+pozo -> jugador: obtenerVehiculo()
+
+jugador --> pozo: auto: Auto
+
+activate auto
+
+pozo -> auto: pozo(jugador: Jugador)
+
+deactivate pozo
+
+auto -> jugador: sumarMovimentos(3)
+
+deactivate auto
+deactivate calle
+deactivate celda
+
+user -> tablero: movimientos()
+tablero -> jugador: movimientos()
+jugador --> tablero: X + 3
+
+deactivate jugador
+
+tablero --> user: X + 3
+
+deactivate tablero
+
+@enduml
+

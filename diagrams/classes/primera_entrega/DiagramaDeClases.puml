@@ -1,0 +1,87 @@
+@startuml modelo-inicial
+
+class Tablero {
+    + mover(dir: Direccion)
+    + iniciarEn(celda: Celda)
+    + asociarJugador(jugador: Jugador)
+}
+
+class GeneradorDeCiudad {
+    - filas: int
+    - columnas: int
+    + buscarCelda(Celda celda): Celda
+    - generarCeldas(): void
+    - generarCaminos(): void
+}
+
+class Jugador {
+    - movimientos: Long
+    + getPosicion()
+    + setPosicion(celda: Celda)
+    + sumarMovimientos()
+    + restarMovimientos()
+    + reemplazarVehiculo()
+    + mover(dir: Direccion)
+    + movimientos()
+    + sorpresaFavorable()
+    + sorpresaDesfavorable() 
+    + reemplazarVehiculo()
+    + sumarMovimientos(int suma)
+    + mover(Direccion dir)
+}
+
+class Calle {
+    + cruzarCon(jug: Jugador)
+    + proximaEsquina(esquinaActual: Celda): Celda
+    + contiene(esquina: Celda): Boolean
+    + agregarCelda(celda: Celda)
+}
+
+interface Vehiculo {
+    + {abstract} reemplazar(): Vehiculo
+    + {abstract} pozo(jug: Jugador)
+    + {abstract} piquete(jug: Jugador)
+    + {abstract} controlPolicial(jug: Jugador)
+}
+
+interface Modificador {
+    + {abstract} cruzarCon(jug: Jugador)
+}
+
+class Celda {
+    - f: Int
+    - c: Int
+
+    - obtenerEsquinas(): Array<Celdas>
+    + agregarCalle(calle: Calle) : void
+    + mover(jug: Jugador, dir: Direccion): Celda
+}
+
+class Registro {
+
+}
+
+interface Direccion {
+    + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
+}
+
+Tablero -left-> Jugador
+Tablero --> GeneradorDeCiudad
+GeneradorDeCiudad --> Celda
+GeneradorDeCiudad --> Calle
+Jugador -left-> Vehiculo
+Jugador --> Celda
+Tablero -right-> Registro
+Calle -left-> Modificador
+Calle .left.> Jugador
+Celda ..> Jugador
+Modificador .left.> Vehiculo
+Celda "2" -- "4" Calle
+Modificador .up.> Jugador
+Tablero ..> Direccion
+Jugador ..> Direccion
+Celda .right.> Direccion
+
+
+@enduml
+

@@ -1,0 +1,44 @@
+
+@startuml interface-modificador
+
+interface Modificador {
+    + {abstract} cruzarCon(jug: Jugador)
+}
+
+class Pozo {
+    + cruzarCon(jug:Jugador)
+}
+
+class ControlPolicial {
+    + cruzarCon(jug:Jugador)
+}
+
+class Piquete {
+    + cruzarCon(jug:Jugador)
+}
+
+class Favorable {
+    + cruzarCon(jug:Jugador)
+}
+
+class Desfavorable {
+    + cruzarCon(jug:Jugador)
+}
+
+class CambioDeVehiculo {
+    + cruzarCon(jug:Jugador)
+}
+
+class Nulo {
+    + cruzarCon(jug:Jugador)
+}
+
+Favorable ..|> Modificador
+Desfavorable .left.|> Modificador
+CambioDeVehiculo .up.|> Modificador
+Pozo .right.|> Modificador
+Piquete ..|> Modificador
+ControlPolicial .up.|> Modificador
+Nulo ..|> Modificador
+
+@enduml 

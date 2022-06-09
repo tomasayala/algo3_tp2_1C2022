@@ -1,0 +1,63 @@
+@startuml sec-auto-atraviesa-grilla-sin-obs
+' Caso de uso 
+' Una camioneta atraviesa la ciudad y se encuentra con un Pozo. No penalizada .
+
+title Un camioneta atraviesa la ciudad y se encuentra con un Pozo. No es penalizada.
+
+Actor Usuario as user
+participant "tablero:Tablero" as tablero
+participant "jugador:Jugador" as jugador
+participant "celda:Celda" as celda
+participant "calle:Calle" as calle
+participant "pozo:Pozo" as pozo
+participant "camioneta:Camioneta4X4" as camioneta
+
+
+activate tablero
+
+user -> tablero: mover(dir: Direccion)
+
+activate jugador
+
+tablero -> jugador: mover(dir: Direccion)
+
+activate celda
+
+jugador -> celda: mover(self, dir: Direccion)
+
+activate calle
+
+celda -> calle: cruzarCon(jug: Jugador)
+
+deactivate celda
+activate pozo
+
+calle -> pozo: cruzarCon(jug: Jugador)
+
+deactivate calle
+
+pozo -> jugador: obtenerVehiculo()
+
+jugador --> pozo: camioneta:Camioneta4X4
+
+activate camioneta
+
+pozo -> camioneta: pozo(jugador: Jugador) 
+
+deactivate camioneta
+deactivate pozo
+deactivate calle
+deactivate celda
+
+user -> tablero: movimientos()
+
+tablero -> jugador: movimientos()
+jugador --> tablero: X 
+deactivate jugador
+
+tablero --> user: X 
+
+deactivate tablero
+
+@enduml
+
