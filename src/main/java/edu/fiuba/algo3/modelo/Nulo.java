@@ -8,5 +8,6 @@ public class Nulo implements Modificador {
     public void cruzarCon(Jugador jugador) {
 
         jugador.sumarMovimientos(1);
+
     }
 }

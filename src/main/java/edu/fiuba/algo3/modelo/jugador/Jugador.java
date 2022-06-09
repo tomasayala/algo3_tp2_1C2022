@@ -39,11 +39,9 @@ public class Jugador {
         this.movimientos += suma;
     }
 
-    public void restarMovimientos(int resta) {
-        this.movimientos -= resta;
-    }
-
     public void mover(Direccion dir) {
         this.celdaActual = this.celdaActual.mover(this, dir);
     }
+
+    public int movimientos() { return (Math.toIntExact(movimientos)); }
 }
