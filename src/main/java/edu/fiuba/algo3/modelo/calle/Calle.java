@@ -25,10 +25,9 @@ public class Calle {
     public Celda siguienteEsquina(Celda esquinaActual) {
         // Solo funciona para 2 celdas
 
-        ArrayList<Celda> buscador = celdas;
-        buscador.remove(esquinaActual);
-
-        return this.celdas.get(0);
+        if (esquinaActual.equals(this.celdas.get(0))) {
+            return this.celdas.get(1);
+        } else return this.celdas.get(0);
     }
 
     public boolean contiene(Celda celda) {

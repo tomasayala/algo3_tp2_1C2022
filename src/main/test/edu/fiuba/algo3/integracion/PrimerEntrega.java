@@ -11,6 +11,7 @@ import edu.fiuba.algo3.modelo.direccion.Izquierda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.modificador.Pozo;
+import edu.fiuba.algo3.modelo.modificador.Piquete;
 import edu.fiuba.algo3.modelo.modificador.CambioDeVehiculo;
 import edu.fiuba.algo3.modelo.tablero.Tablero;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
@@ -116,14 +117,45 @@ public class PrimerEntrega {
         this.tablero.mover(this.direccion);
         this.tablero.mover(izquierda);
         this.tablero.mover(this.direccion);
+        this.tablero.mover(izquierda);
 
-        Integer cantMovimientosFinalEsperado = 6;
+        Integer cantMovimientosFinalEsperado = 7;
 
         assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
     }
 
     @Test
-    public void test05() {
-        assertEquals(1, 1);
+    public void unaMotoAtraviesaLaCiudadYSeEncuentraConUnCambioDeVehiculoYCambiaPorAuto() {
+        // IVehiculo auto = new Moto();
+        // Modificador cambio = new CambioDeVehiculo();
+
+        // Jugador jugador = this.iniciarConfig(auto, cambio);
+
+        // // Sabemos que a diferencia de una moto, la moto pasa el piquete y el auto no.
+        // // Tambien, sabemos que a diferencia de una 4x4, el auto es penalizado en dos movimientos
+        // // en el primer pozo que agarre.
+
+        // Celda celda02 = new Celda(0, 2);
+        // Celda celda03 = new Celda(0, 3);
+        // Modificador pozo = new Pozo();
+        // Modificador piquete = new Piquete();
+
+        // Calle calle0102 = new Calle(this.celdaFinal, celda02, pozo);
+        // Calle calle0203 = new Calle(this.celdaFinal, celda03, piquete);
+
+        // this.celdaFinal.agregarCalle(calle0102);
+        // celda02.agregarCalle(calle0102);
+        // celda02.agregarCalle(calle0203);
+        // celda03.agregarCalle(calle0203);
+
+        // this.tablero.mover(this.direccion);
+        // this.tablero.mover(this.direccion);
+
+        // // No es 4x4
+        // assertEquals(5, jugador.movimientos());
+
+        // // No es moto
+        // this.tablero.mover(this.direccion);
+        // assertEquals(6, jugador.movimientos());
     }
 }
