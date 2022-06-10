@@ -4,10 +4,10 @@ import java.util.ArrayList;
 // import java.util.HashMap;
 // import java.util.Set;
 
+import edu.fiuba.algo3.modelo.calle.Calle;
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.modificador.Pozo;
-import edu.fiuba.algo3.modelo.calle.Calle;
 
 public class GeneradorDeCiudad {
     private Celda[][] celdas;

@@ -10,4 +10,5 @@ public class ControlPolicial implements Modificador {
         jugador.getVehiculo().controlPolicial(jugador);
         jugador.sumarMovimientos(1);
     }
+    
 }

@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 public class Jugador {
+    
     private IVehiculo vehiculo;
     private long movimientos;
     private Celda celdaActual;
@@ -52,4 +53,5 @@ public class Jugador {
     }
 
     public int movimientos() { return (Math.toIntExact(movimientos)); }
+
 }

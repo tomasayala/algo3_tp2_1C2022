@@ -7,9 +7,11 @@ import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.calle.Calle;
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.direccion.Izquierda;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
 import edu.fiuba.algo3.modelo.modificador.Pozo;
+import edu.fiuba.algo3.modelo.modificador.CambioDeVehiculo;
 import edu.fiuba.algo3.modelo.tablero.Tablero;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
@@ -73,7 +75,7 @@ public class PrimerEntrega {
     }
 
     @Test
-    public void Una4X4AtraviesaLaCiudadYSeEncuentraConUnPozoNoEsPenalizada() {
+    public void una4X4AtraviesaLaCiudadYSeEncuentraConUnPozoNoEsPenalizada() {
         IVehiculo camioneta4x4 = new Camioneta4x4();
         Modificador pozo = new Pozo();
 
@@ -90,8 +92,34 @@ public class PrimerEntrega {
     }
 
     @Test
-    public void test04() {
-        assertEquals(1, 1);
+    public void unAutoAtraviesaLaCiudadYSeEncuentraConUnCambioDeVehiculoYCambiaPor4X4() {
+        IVehiculo auto = new Auto();
+        Modificador cambio = new CambioDeVehiculo();
+
+        Jugador jugador = this.iniciarConfig(auto, cambio);
+
+        // Sabemos que la 4x4 penaliza en dos movimientos luego de 2 pozos, de esa manera
+        // la diferenciamos (Si se agrega otro vehiculo con misma condicion se debe
+        // actualizar el test).
+
+        Celda celda02 = new Celda(0, 2);
+        Direccion izquierda = new Izquierda();
+
+        Modificador pozo = new Pozo();
+        Calle calle0102 = new Calle(this.celdaFinal, celda02, pozo);
+
+        this.celdaFinal.agregarCalle(calle0102);
+        celda02.agregarCalle(calle0102);
+
+        this.tablero.mover(this.direccion);
+        
+        this.tablero.mover(this.direccion);
+        this.tablero.mover(izquierda);
+        this.tablero.mover(this.direccion);
+
+        Integer cantMovimientosFinalEsperado = 6;
+
+        assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
     }
 
     @Test

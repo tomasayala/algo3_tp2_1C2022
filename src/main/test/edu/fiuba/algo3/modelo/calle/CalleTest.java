@@ -1,15 +1,11 @@
 package edu.fiuba.algo3.modelo.calle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Pozo;
-import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 public class CalleTest {
     
