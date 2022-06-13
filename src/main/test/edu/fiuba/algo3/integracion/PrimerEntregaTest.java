@@ -20,7 +20,7 @@ import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.Camioneta4x4;
 import edu.fiuba.algo3.modelo.direccion.Derecha;
 
-public class PrimerEntrega {
+public class PrimerEntregaTest {
     Tablero tablero = new Tablero(10, 10);
     IVehiculo moto = new Moto();
     Celda celdaInicial = new Celda(0, 0);
