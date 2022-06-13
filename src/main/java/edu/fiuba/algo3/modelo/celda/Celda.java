@@ -27,7 +27,7 @@ public class Celda {
     }
 
     public void agregarCalle(Calle calle) {
-        if (this.calles.size() >= 4) throw new Error();
+        if (this.calles.size() > 4) throw new Error();
 
         this.calles.add(calle);
     }
@@ -61,12 +61,11 @@ public class Celda {
         return sigCelda;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Celda)) {
-            return false;
-        }
-        Celda c = (Celda) obj;
-        return (this.fila() == c.fila() && this.columna() == c.columna());
+    public boolean equals(Celda unaCelda) {
+        if (this.fila() != unaCelda.fila()) return false;
+        if (this.columna() != unaCelda.columna()) return false;
+
+        return true;
     }
+
 }

@@ -5,14 +5,19 @@ import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 public class Jugador {
+    
     private IVehiculo vehiculo;
     private long movimientos;
     private Celda celdaActual;
 
-    public Jugador(IVehiculo unVehiculo, Celda celdaInicial) {
+    public Jugador(IVehiculo unVehiculo) {
         this.vehiculo = unVehiculo;
         this.movimientos = 0;
-        this.celdaActual = celdaInicial;
+        this.celdaActual = null;
+    }
+
+    public void asignarCeldaInicial(Celda unaCelda) {
+        this.celdaActual = unaCelda;
     }
 
     public IVehiculo getVehiculo() {
@@ -21,6 +26,10 @@ public class Jugador {
 
     public Celda getPosicion() {
         return this.celdaActual;
+    }
+
+    public void setPosicion(Celda celda) {
+        this.celdaActual = celda;
     }
 
     public void sorpresaFavorable() {
@@ -44,4 +53,5 @@ public class Jugador {
     }
 
     public int movimientos() { return (Math.toIntExact(movimientos)); }
+
 }

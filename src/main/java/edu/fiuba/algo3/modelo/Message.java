@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.modificadores.Localize;
-
 public class Message extends Localize {
 
     public Message(String esContent, String usContent) {
