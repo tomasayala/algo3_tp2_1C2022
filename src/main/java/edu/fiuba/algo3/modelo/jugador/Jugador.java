@@ -56,7 +56,7 @@ public class Jugador {
 
     public int movimientos() { return (Math.toIntExact(movimientos)); }
 
-    public void aplicarModificador(Sorpresa sorpresa) {
+    public void aplicarSorpresa(Sorpresa sorpresa) {
         this.movimientos = (sorpresa.aplicarSorpresa(this.movimientos));
     }
 

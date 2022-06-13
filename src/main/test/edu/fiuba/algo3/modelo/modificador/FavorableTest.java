@@ -12,16 +12,15 @@ class FavorableTest {
     @Test
     void  modificadorFavorableSeCruzaConJugador() {
         //Arrange
-        Favorable modificadorFavorable = new Favorable();
+        Favorable favorable = new Favorable();
         Celda celda = new Celda(0, 0);
         Moto moto = new Moto();
         Jugador jugador = new Jugador(moto);
         jugador.asignarCeldaInicial(celda);
-
         jugador.sumarMovimientos(10);
 
         //Act
-        modificadorFavorable.cruzarCon(jugador);
+        favorable.cruzarCon(jugador);
         //Assert
         assertEquals(Math.round((10 * 0.8)+1), jugador.movimientos()); //Resta el 20% de los movimientos hechos + 1 movimiento
     }

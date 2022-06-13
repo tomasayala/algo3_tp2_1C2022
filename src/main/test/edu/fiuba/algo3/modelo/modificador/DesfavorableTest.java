@@ -20,7 +20,7 @@ class DesfavorableTest {
     @Test
     void  modificadorFavorableSeCruzaConJugador() {
         //Arrange
-        Desfavorable modificadorDesfavorable = new Desfavorable();
+        Desfavorable desfavorable = new Desfavorable();
         Celda celda = new Celda(0, 0);
         Moto moto = new Moto();
         Jugador jugador = new Jugador(moto);
@@ -29,7 +29,7 @@ class DesfavorableTest {
         jugador.sumarMovimientos(10);
 
         //Act
-        modificadorDesfavorable.cruzarCon(jugador);
+        desfavorable.cruzarCon(jugador);
         //Assert
         assertEquals(Math.round((10 * 1.25)+1), jugador.movimientos()); //Suma el 25% de los movimientos hechos + 1 movimiento
     }

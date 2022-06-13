@@ -6,9 +6,10 @@ public class Desfavorable implements Modificador, Sorpresa {
 
     @Override
     public void cruzarCon(Jugador jugador) {
-       // Desfavorable desfavorable = new Desfavorable();
-        //jugador.aplicarModificador(desfavorable);
-        jugador.sorpresaDesfavorable();
+
+        Desfavorable desfavorable = new Desfavorable();
+        jugador.aplicarSorpresa(desfavorable);
+
         jugador.sumarMovimientos(NUMERO_DE_MOVIMIENTOS);
     }
 
