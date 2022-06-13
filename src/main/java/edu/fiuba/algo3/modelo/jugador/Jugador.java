@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Sorpresa;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 public class Jugador {
@@ -53,5 +55,9 @@ public class Jugador {
     }
 
     public int movimientos() { return (Math.toIntExact(movimientos)); }
+
+    public void aplicarModificador(Sorpresa sorpresa) {
+        this.movimientos = (sorpresa.aplicarSorpresa(this.movimientos));
+    }
 
 }
