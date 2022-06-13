@@ -23,7 +23,7 @@ class FavorableTest {
         //Act
         modificadorFavorable.cruzarCon(jugador);
         //Assert
-        assertEquals(((10 * 0.8)+1), jugador.movimientos()); //Resta el 20% de los movimientos hechos + 1 movimiento
+        assertEquals(Math.round((10 * 0.8)+1), jugador.movimientos()); //Resta el 20% de los movimientos hechos + 1 movimiento
     }
 
 }
