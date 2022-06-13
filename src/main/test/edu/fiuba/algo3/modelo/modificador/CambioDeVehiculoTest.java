@@ -56,4 +56,5 @@ public class CambioDeVehiculoTest {
         assertEquals(moto.getClass(), jugador.getVehiculo().getClass());
 
     }
+    
 }
