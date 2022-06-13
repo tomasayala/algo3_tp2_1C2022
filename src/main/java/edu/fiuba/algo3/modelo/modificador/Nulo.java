@@ -6,7 +6,7 @@ public class Nulo implements Modificador {
 
     @Override
     public void cruzarCon(Jugador jugador) {
-        jugador.sumarMovimientos(1);
+        jugador.sumarMovimientos(NUMERO_DE_MOVIMIENTOS);
     }
 
 }
