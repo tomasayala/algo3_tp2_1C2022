@@ -7,18 +7,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DesfavorableTest {
+public class DesfavorableTest {
 
     @Test
-    void cruzarCon() {
-    }
+    public void cruzarCon() {}
 
     @Test
-    void aplicarSorpresa() {
-    }
+    public void aplicarSorpresa() {}
 
     @Test
-    void  modificadorFavorableSeCruzaConJugador() {
+    public void  modificadorFavorableSeCruzaConJugador() {
         //Arrange
         Desfavorable desfavorable = new Desfavorable();
         Celda celda = new Celda(0, 0);
@@ -33,4 +31,5 @@ class DesfavorableTest {
         //Assert
         assertEquals(Math.round((10 * 1.25)+1), jugador.movimientos()); //Suma el 25% de los movimientos hechos + 1 movimiento
     }
+
 }

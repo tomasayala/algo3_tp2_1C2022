@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FavorableTest {
+public class FavorableTest {
 
     @Test
-    void  modificadorFavorableSeCruzaConJugador() {
+    public void  modificadorFavorableSeCruzaConJugador() {
         //Arrange
         Favorable favorable = new Favorable();
         Celda celda = new Celda(0, 0);
