@@ -8,9 +8,9 @@ public class Favorable implements Modificador, Sorpresa {
     public void cruzarCon(Jugador jugador) {
 
         Favorable favorable = new Favorable();
-        jugador.aplicarSorpresa(favorable);
-
         jugador.sumarMovimientos(NUMERO_DE_MOVIMIENTOS);
+        
+        jugador.aplicarSorpresa(favorable);
     }
 
     @Override
