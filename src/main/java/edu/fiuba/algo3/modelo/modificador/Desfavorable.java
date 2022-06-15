@@ -15,8 +15,9 @@ public class Desfavorable implements Modificador, Sorpresa {
 
     @Override
     public int aplicarSorpresa(long movimientos) {
-
-        return ( Math.toIntExact(Math.round(movimientos * 1.25)) );
+        return (Math.toIntExact(Math.round(
+            movimientos * 1.25
+        )));
     }
 
 }

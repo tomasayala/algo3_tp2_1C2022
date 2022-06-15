@@ -24,7 +24,7 @@ public class Moto implements IVehiculo{
 
     @Override
     public void piquete(Jugador jugador) {
-        //TODO
+        jugador.sumarMovimientos(2);
     }
 
     @Override

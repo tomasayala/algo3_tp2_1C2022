@@ -15,7 +15,9 @@ public class Favorable implements Modificador, Sorpresa {
 
     @Override
     public int aplicarSorpresa(long movimientos) {
-
-        return ( Math.toIntExact(Math.round(movimientos * 0.8)));
+        return (Math.toIntExact(Math.round(
+            movimientos * COEFICIENTE_FAVORABLE
+        )));
     }
+
 }

@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Piquete;
 import edu.fiuba.algo3.modelo.modificador.Pozo;
 import edu.fiuba.algo3.modelo.tablero.Tablero;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
@@ -87,6 +88,69 @@ public class PrimerEntregaTest {
         this.tablero.mover(this.direccion);
 
         assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
+    }
+
+    // @Test
+    // public void unAutoAtraviesaLaCiudadYSeEncuentraConUnPiqueteYNoAvanzaDePosicion() {
+    //     IVehiculo auto = new Auto();
+    //     Modificador piquete = new Piquete();
+
+    //     Jugador jugador = this.iniciarConfig(auto, piquete);
+
+    //     Integer cantMovimientosInicialEsperado = 0;
+    //     Integer cantMovimientosFinalEsperado = 1;
+    //     Integer filaFinalEsperada = 0;
+    //     Integer columnaFinalEsperada = 0;
+
+    //     assertEquals(cantMovimientosInicialEsperado, jugador.movimientos());
+
+    //     this.tablero.mover(this.direccion);
+
+    //     assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
+    //     assertEquals(filaFinalEsperada, jugador.getPosicion().fila());
+    //     assertEquals(columnaFinalEsperada, jugador.getPosicion().columna());
+    // }
+
+    // @Test
+    // public void una4X4AtraviesaLaCiudadYSeEncuentraConUnPiqueteYNoAvanzaDePosicion() {
+    //     IVehiculo camioneta = new Camioneta4x4();
+    //     Modificador piquete = new Piquete();
+
+    //     Jugador jugador = this.iniciarConfig(camioneta, piquete);
+
+    //     Integer cantMovimientosInicialEsperado = 0;
+    //     Integer cantMovimientosFinalEsperado = 1;
+    //     Integer filaFinalEsperada = 0;
+    //     Integer columnaFinalEsperada = 0;
+
+    //     assertEquals(cantMovimientosInicialEsperado, jugador.movimientos());
+
+    //     this.tablero.mover(this.direccion);
+
+    //     assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
+    //     assertEquals(filaFinalEsperada, jugador.getPosicion().fila());
+    //     assertEquals(columnaFinalEsperada, jugador.getPosicion().columna());
+    // }
+
+    @Test
+    public void unaMotoAtraviesaLaCiudadYSeEncuentraConUnPiqueteAvanzaDePosicionYPenalizaEnDosMovimientos() {
+        IVehiculo moto = new Moto();
+        Modificador piquete = new Piquete();
+
+        Jugador jugador = this.iniciarConfig(moto, piquete);
+
+        Integer cantMovimientosInicialEsperado = 0;
+        Integer cantMovimientosFinalEsperado = 3;
+        Integer filaFinalEsperada = 0;
+        Integer columnaFinalEsperada = 1;
+
+        assertEquals(cantMovimientosInicialEsperado, jugador.movimientos());
+
+        this.tablero.mover(this.direccion);
+
+        assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
+        assertEquals(filaFinalEsperada, jugador.getPosicion().fila());
+        assertEquals(columnaFinalEsperada, jugador.getPosicion().columna());
     }
 
 }
