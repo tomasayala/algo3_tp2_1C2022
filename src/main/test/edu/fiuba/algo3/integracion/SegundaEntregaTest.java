@@ -235,29 +235,9 @@ public class SegundaEntregaTest {
 
         Jugador jugador = this.iniciarConfig(auto, cambio);
 
-        // Sabemos que la 4x4 penaliza en dos movimientos luego de 2 pozos, de esa manera
-        // la diferenciamos (Si se agrega otro vehiculo con misma condicion se debe
-        // actualizar el test).
-
-        Celda celda02 = new Celda(0, 2);
-        Direccion izquierda = new Izquierda();
-
-        Modificador pozo = new Pozo();
-        Calle calle0102 = new Calle(this.celdaFinal, celda02, pozo);
-
-        this.celdaFinal.agregarCalle(calle0102);
-        celda02.agregarCalle(calle0102);
-
         this.tablero.mover(this.direccion);
-        
-        this.tablero.mover(this.direccion);
-        this.tablero.mover(izquierda);
-        this.tablero.mover(this.direccion);
-        this.tablero.mover(izquierda);
 
-        Integer cantMovimientosFinalEsperado = 7;
-
-        assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
+        assertEquals(Camioneta4x4.class, jugador.getVehiculo().getClass());
     }
 
     @Test
@@ -267,32 +247,9 @@ public class SegundaEntregaTest {
 
         Jugador jugador = this.iniciarConfig(auto, cambio);
 
-        // Sabemos que una moto a diferencia de una auto, pasa el piquete y la penalizan.
-        // Tambien, sabemos que a diferencia de una 4x4, el auto es penalizado en dos movimientos
-        // en el primer pozo que agarre.
-
-        Celda celda02 = new Celda(0, 2);
-        Celda celda03 = new Celda(0, 3);
-        Modificador pozo = new Pozo();
-        Modificador piquete = new Piquete();
-
-        Calle calle0102 = new Calle(this.celdaFinal, celda02, pozo);
-        Calle calle0203 = new Calle(celda02, celda03, piquete);
-
-        this.celdaFinal.agregarCalle(calle0102);
-        celda02.agregarCalle(calle0102);
-        celda02.agregarCalle(calle0203);
-        celda03.agregarCalle(calle0203);
-
-        this.tablero.mover(this.direccion);
         this.tablero.mover(this.direccion);
 
-        // No es 4x4
-        assertEquals(5, jugador.movimientos());
-
-        // No es moto
-        this.tablero.mover(this.direccion);
-        assertEquals(6, jugador.movimientos());
+        assertEquals(Auto.class, jugador.getVehiculo().getClass());
     }
 
     @Test
@@ -302,27 +259,9 @@ public class SegundaEntregaTest {
 
         Jugador jugador = this.iniciarConfig(Camioneta4x4, cambio);
 
-        // Sabemos que la moto a diferencia de un auto o 4x4, avanza de celda ante un
-        // piquete y penaliza 2 movimientos (Se usa esta forma, porque no tenemos acceso
-        // al vehiculo).
-
-        Celda celda02 = new Celda(0, 2);
-        Modificador piquete = new Piquete();
-        Calle calle0102 = new Calle(this.celdaFinal, celda02, piquete);
-
-        this.celdaFinal.agregarCalle(calle0102);
-        celda02.agregarCalle(calle0102);
-
-        this.tablero.mover(this.direccion);
         this.tablero.mover(this.direccion);
 
-        Integer cantMovimientosFinalEsperado = 4;
-        Integer filaFinalEsperada = 0;
-        Integer columnaFinalEsperada = 2;
-        
-        assertEquals(cantMovimientosFinalEsperado, jugador.movimientos());
-        assertEquals(filaFinalEsperada, jugador.getPosicion().fila());
-        assertEquals(columnaFinalEsperada, jugador.getPosicion().columna());
+        assertEquals(Moto.class, jugador.getVehiculo().getClass());
     }
 
 }
