@@ -21,12 +21,13 @@ public class Camioneta4x4 implements IVehiculo{
     }
 
     @Override
-    public void pozo(Jugador jugador) {
+    public long pozo() {
         int penalizacion = 0;
         this.pozosAtravezados ++;
         
         if(pozosAtravezados > 3) penalizacion = 2;
-        jugador.sumarMovimientos(penalizacion);
+        //jugador.sumarMovimientos(penalizacion);
+        return penalizacion;
     }
 
     @Override
@@ -35,10 +36,13 @@ public class Camioneta4x4 implements IVehiculo{
     }
 
     @Override
-    public void controlPolicial(Jugador jugador) {
+    public long controlPolicial() {
         int penalizacion = 0;
         Random random = new Random();
         if(random.nextInt(10) <= this.probabilidadControl) { penalizacion = 3;}
-        jugador.sumarMovimientos(penalizacion);
+        //jugador.sumarMovimientos(penalizacion);
+        //Casteo a long
+        long longNum = penalizacion;
+        return longNum;
     }
 }

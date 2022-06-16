@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.modificador;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 public class Favorable implements Modificador, Sorpresa {
 
@@ -11,6 +12,11 @@ public class Favorable implements Modificador, Sorpresa {
         jugador.sumarMovimientos(NUMERO_DE_MOVIMIENTOS);
         
         jugador.aplicarSorpresa(favorable);
+    }
+
+    @Override
+    public long aplicarA(IVehiculo vehiculo) {
+        return 0;
     }
 
     @Override

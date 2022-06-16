@@ -18,8 +18,10 @@ public class Moto implements IVehiculo{
     }
 
     @Override
-    public void pozo(Jugador jugador) {
-        jugador.sumarMovimientos(3);
+    public long pozo() {
+        long movimientos = 3;
+        return movimientos;
+        //jugador.sumarMovimientos(3);
     }
 
     @Override
@@ -28,10 +30,13 @@ public class Moto implements IVehiculo{
     }
 
     @Override
-    public void controlPolicial(Jugador jugador) {
+    public long controlPolicial() {
         int penalizacion = 0;
         Random random = new Random();
         if(random.nextInt(10) <= this.probabilidadControl) { penalizacion = 3;}
-        jugador.sumarMovimientos(penalizacion);
+        //jugador.sumarMovimientos(penalizacion);
+        //Casteo a long
+        long longNum = penalizacion;
+        return longNum;
     }
 }
