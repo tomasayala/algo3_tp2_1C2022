@@ -61,16 +61,18 @@ interface Direccion {
     + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
 }
 
+Calle .up.> Vehiculo
+Celda .left.> Vehiculo
 Vehiculo ..> Direccion
-Vehiculo .left.> Sorpresa
+Vehiculo .up.> Sorpresa
 Tablero -left- Vehiculo
 Tablero --> GeneradorDeCiudad
 GeneradorDeCiudad .down.> Celda
 Vehiculo --> Celda
-Tablero -right-> Registro
-Calle -left-> Modificador
-Modificador .left.> Vehiculo
-Celda "2" -- "4" Calle
+Tablero -up-> Registro
+Calle -up-> Modificador
+Modificador .right.> Vehiculo
+Celda "2" -left- "4" Calle
 Tablero ..> Direccion
 Celda .right.> Direccion
 

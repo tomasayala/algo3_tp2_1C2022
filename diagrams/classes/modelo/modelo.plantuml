@@ -12,11 +12,9 @@ class Jugador {
 
     + sumarMovimientos()
     + restarMovimientos()
-    + sorpresaFavorable()
-    + sorpresaDesfavorable()
-    + reemplazarVehiculo()
+    + aplicarModificador(mod: Modificador)
+    + aplicarSorpresa(sorp: Sorpresa)
     + mover(dir: Direccion)
-    + movimientos()
 }
 
 class Calle {
@@ -35,6 +33,11 @@ interface Vehiculo {
 
 interface Modificador {
     + {abstract} cruzarCon(jug: Jugador)
+    + {abstract} aplicarA(veh: Vehiculo)
+}
+
+interface Sorpresa {
+    + {abstract} aplicarSorpresa(mov: long): long
 }
 
 class Celda {
@@ -64,6 +67,7 @@ interface Direccion {
     + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
 }
 
+Jugador .up.> Sorpresa
 Tablero -left-> Jugador
 Tablero --> GeneradorDeCiudad
 GeneradorDeCiudad .down.> Celda
@@ -147,38 +151,52 @@ Moto ..|> Vehiculo
 
 @enduml
 
-@startuml interface-modificador
+@startuml interface-modificador-sorpresa
+
+interface Sorpresa {
+    + {abstract} aplicarSorpresa(mov: long): long
+}
 
 interface Modificador {
     + {abstract} cruzarCon(jug: Jugador)
+    + {abstract} aplicarA(veh: Vehiculo)
 }
 
 class Pozo {
     + cruzarCon(jug:Jugador)
+    + aplicarA(veh: Vehiculo)
 }
 
 class ControlPolicial {
     + cruzarCon(jug:Jugador)
+    + aplicarA(veh: Vehiculo)
 }
 
 class Piquete {
     + cruzarCon(jug:Jugador)
+    + aplicarA(veh: Vehiculo)
 }
 
 class Favorable {
     + cruzarCon(jug:Jugador)
+    + aplicarA(veh: Vehiculo)
+    + aplicarSorpresa(mov: long): long
 }
 
 class Desfavorable {
     + cruzarCon(jug:Jugador)
+    + aplicarA(veh: Vehiculo)
+    + aplicarSorpresa(mov: long): long    
 }
 
 class CambioDeVehiculo {
     + cruzarCon(jug:Jugador)
+    + aplicarA(veh: Vehiculo)
 }
 
 class Nulo {
     + cruzarCon(jug:Jugador)
+    + aplicarA(veh: Vehiculo)
 }
 
 Favorable ..|> Modificador
@@ -188,5 +206,7 @@ Pozo .right.|> Modificador
 Piquete ..|> Modificador
 ControlPolicial .up.|> Modificador
 Nulo ..|> Modificador
+Desfavorable ..> Sorpresa
+Favorable ..> Sorpresa
 
 @enduml
