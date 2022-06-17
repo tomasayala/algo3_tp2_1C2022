@@ -17,6 +17,9 @@ public class Jugador {
         this.movimientos = 0;
         this.celdaActual = null;
     }
+    public void aplicarModificador(Modificador modificador) {
+        this.movimientos += modificador.aplicarA(getVehiculo());
+    }
 
     public void asignarCeldaInicial(Celda unaCelda) {
         this.celdaActual = unaCelda;
@@ -32,14 +35,6 @@ public class Jugador {
 
     public void setPosicion(Celda celda) {
         this.celdaActual = celda;
-    }
-
-    public void sorpresaFavorable() {
-        this.movimientos = Math.round(this.movimientos * 0.8);
-    }
-
-    public void sorpresaDesfavorable() {
-        this.movimientos = Math.round(this.movimientos * 1.25);
     }
 
     public void reemplazarVehiculo() {

@@ -56,7 +56,12 @@ public class Celda {
         Celda sigCelda = dir.mover(f, c, esquinas);
         Calle sigCalle = this.obtenerCalleDeEsquina(sigCelda);
         
+
+        // revisar
+
         sigCalle.cruzarCon(jug);
+        // return sigCalle.cruzarCon(jug, sigCelda);
+
 
         return sigCelda;
     }

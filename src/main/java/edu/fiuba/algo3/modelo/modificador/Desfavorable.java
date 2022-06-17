@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.modificador;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 public class Desfavorable implements Modificador, Sorpresa {
 
@@ -14,9 +15,15 @@ public class Desfavorable implements Modificador, Sorpresa {
     }
 
     @Override
-    public int aplicarSorpresa(long movimientos) {
+    public long aplicarA(IVehiculo vehiculo) {
+        return 0;
+    }
 
-        return ( Math.toIntExact(Math.round(movimientos * 1.25)) );
+    @Override
+    public int aplicarSorpresa(long movimientos) {
+        return (Math.toIntExact(Math.round(
+            movimientos * 1.25
+        )));
     }
 
 }
