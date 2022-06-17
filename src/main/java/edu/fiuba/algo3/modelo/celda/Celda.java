@@ -57,9 +57,7 @@ public class Celda {
     }
 
     public void mover(Vehiculo vehiculo, Direccion dir) {
-        ArrayList<Celda> esquinas = this.obtenerEsquinas();
-        
-        Celda sigCelda = dir.mover(f, c, esquinas);
+        Celda sigCelda = this.buscarSiguiente(dir);
         Calle sigCalle = this.obtenerCalleDeEsquina(sigCelda);
     
         sigCalle.cruzarCon(vehiculo);

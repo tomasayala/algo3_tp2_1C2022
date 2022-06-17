@@ -32,7 +32,11 @@ interface Vehiculo {
 }
 
 interface Modificador {
+<<<<<<< HEAD
     + {abstract} cruzarCon(jug: vehiculo)
+=======
+    + {abstract} cruzarCon(jug: Jugador)
+>>>>>>> dev
     + {abstract} aplicarA(veh: Vehiculo)
 }
 
@@ -67,8 +71,13 @@ interface Direccion {
     + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
 }
 
+<<<<<<< HEAD
 vehiculo .up.> Sorpresa
 Tablero -left-> vehiculo
+=======
+Jugador .up.> Sorpresa
+Tablero -left-> Jugador
+>>>>>>> dev
 Tablero --> GeneradorDeCiudad
 GeneradorDeCiudad .down.> Celda
 vehiculo -left-> Vehiculo
@@ -158,44 +167,44 @@ interface Sorpresa {
 }
 
 interface Modificador {
-    + {abstract} cruzarCon(jug: vehiculo)
+    + {abstract} cruzarCon(jug: Jugador)
     + {abstract} aplicarA(veh: Vehiculo)
 }
 
 class Pozo {
-    + cruzarCon(jug:vehiculo)
+    + cruzarCon(jug:Jugador)
     + aplicarA(veh: Vehiculo)
 }
 
 class ControlPolicial {
-    + cruzarCon(jug:vehiculo)
+    + cruzarCon(jug:Jugador)
     + aplicarA(veh: Vehiculo)
 }
 
 class Piquete {
-    + cruzarCon(jug:vehiculo)
+    + cruzarCon(jug:Jugador)
     + aplicarA(veh: Vehiculo)
 }
 
 class Favorable {
-    + cruzarCon(jug:vehiculo)
+    + cruzarCon(jug:Jugador)
     + aplicarA(veh: Vehiculo)
     + aplicarSorpresa(mov: long): long
 }
 
 class Desfavorable {
-    + cruzarCon(jug:vehiculo)
+    + cruzarCon(jug:Jugador)
     + aplicarA(veh: Vehiculo)
     + aplicarSorpresa(mov: long): long    
 }
 
 class CambioDeVehiculo {
-    + cruzarCon(jug:vehiculo)
+    + cruzarCon(jug:Jugador)
     + aplicarA(veh: Vehiculo)
 }
 
 class Nulo {
-    + cruzarCon(jug:vehiculo)
+    + cruzarCon(jug:Jugador)
     + aplicarA(veh: Vehiculo)
 }
 
