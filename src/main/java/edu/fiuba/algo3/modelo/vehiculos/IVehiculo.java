@@ -6,10 +6,10 @@ public interface IVehiculo {
 
     IVehiculo reemplazarVehiculo();
 
-    void pozo(Jugador jugador);
+    long pozo();
 
     void piquete(Jugador jugador);
 
-    void controlPolicial(Jugador jugador);
+    long controlPolicial();
 
 }

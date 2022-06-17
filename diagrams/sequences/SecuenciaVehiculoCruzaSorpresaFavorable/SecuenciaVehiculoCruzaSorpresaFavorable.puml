@@ -1,0 +1,63 @@
+ @startuml SecuenciaVehiculoCambiaVehiculo
+' Caso de uso 
+' Un auto atraviesa la ciudad y se encuentra con una Sorpresa Favorable. 
+
+title Un vehiculo atraviesa la ciudad y se encuentra con una sorpresa Favolrable. 
+
+Actor Usuario as user
+participant "tablero:Tablero" as tablero
+participant "jugador:Jugador" as jugador
+participant "celda:Celda" as celda
+participant "calle:Calle" as calle
+participant ":Favorable" as sorpresa
+
+activate tablero
+
+user -> tablero: mover(dir: Direccion)
+
+activate jugador
+
+tablero -> jugador: mover(dir: Direccion)
+
+activate celda
+
+jugador -> celda: mover(self, dir: Direccion)
+
+activate calle
+
+celda -> calle: cruzarCon(jug: Jugador)
+
+deactivate celda
+
+activate sorpresa
+
+calle -> sorpresa: cruzarCon(jug: Jugador)
+
+deactivate calle
+
+
+sorpresa -> jugador: sumarMovimiento(Y)
+
+sorpresa -> jugador: aplicarSorpresa(self)
+
+jugador -> sorpresa: aplicarSorpresa(movimientos)
+
+jugador <-- sorpresa: Y
+
+deactivate sorpresa
+
+
+deactivate celda
+
+user -> tablero: movimientos()
+
+tablero -> jugador: movimientos()
+jugador --> tablero: X + Y
+deactivate jugador
+
+tablero --> user: X + Y
+
+deactivate tablero
+
+@enduml
+

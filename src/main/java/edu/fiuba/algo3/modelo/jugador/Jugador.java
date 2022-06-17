@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo.jugador;
 
 import edu.fiuba.algo3.modelo.celda.Celda;
 import edu.fiuba.algo3.modelo.direccion.Direccion;
+import edu.fiuba.algo3.modelo.modificador.Modificador;
+import edu.fiuba.algo3.modelo.modificador.Sorpresa;
 import edu.fiuba.algo3.modelo.vehiculos.IVehiculo;
 
 public class Jugador {
@@ -14,6 +16,9 @@ public class Jugador {
         this.vehiculo = unVehiculo;
         this.movimientos = 0;
         this.celdaActual = null;
+    }
+    public void aplicarModificador(Modificador modificador) {
+        this.movimientos += modificador.aplicarA(getVehiculo());
     }
 
     public void asignarCeldaInicial(Celda unaCelda) {
@@ -32,14 +37,6 @@ public class Jugador {
         this.celdaActual = celda;
     }
 
-    public void sorpresaFavorable() {
-        this.movimientos = Math.round(this.movimientos * 0.8);
-    }
-
-    public void sorpresaDesfavorable() {
-        this.movimientos = Math.round(this.movimientos * 1.25);
-    }
-
     public void reemplazarVehiculo() {
         this.vehiculo = this.vehiculo.reemplazarVehiculo();
     }
@@ -53,5 +50,9 @@ public class Jugador {
     }
 
     public int movimientos() { return (Math.toIntExact(movimientos)); }
+
+    public void aplicarSorpresa(Sorpresa sorpresa) {
+        this.movimientos = (sorpresa.aplicarSorpresa(this.movimientos));
+    }
 
 }

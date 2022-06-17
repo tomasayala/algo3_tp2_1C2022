@@ -20,6 +20,13 @@ public class Calle {
 
     public void cruzarCon(Jugador jugador) {
         this.modificador.cruzarCon(jugador);
+
+        Celda origen = jugador.getPosicion();
+        Celda destino = this.siguienteEsquina(origen);
+
+        // return this.modificador.puedoCruzar(origen, destino);
+
+
     }
 
     public Celda siguienteEsquina(Celda esquinaActual) {
