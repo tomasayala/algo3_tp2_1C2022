@@ -2,12 +2,12 @@
 
 class Tablero {
     + mover(dir: Direccion)
-    + agregarJugador(jug: Jugador)
+    + agregarvehiculo(jug: vehiculo)
     + obtenerPosicion(): Celda
     + iniciarEn(celda: Celda)
 }
 
-class Jugador {
+class vehiculo {
     - movimientos: Int
 
     + sumarMovimientos()
@@ -18,7 +18,7 @@ class Jugador {
 }
 
 class Calle {
-    + cruzarCon(jug: Jugador)
+    + cruzarCon(jug: vehiculo)
     + proximaEsquina(esquinaActual: Celda): Celda
     + contiene(esquina: Celda): Boolean
     + agregarCelda(esquina: Celda)
@@ -32,7 +32,7 @@ interface Vehiculo {
 }
 
 interface Modificador {
-    + {abstract} cruzarCon(jug: Jugador)
+    + {abstract} cruzarCon(jug: vehiculo)
     + {abstract} aplicarA(veh: Vehiculo)
 }
 
@@ -47,7 +47,7 @@ class Celda {
     - obtenerEsquinas(): Array<Celdas>
     - obtenerCalleDeEsquina(esquina: Celda): Calle
     + agregarCalle(calle: Calle)
-    + mover(jug: Jugador, dir: Direccion): Celda
+    + mover(jug: vehiculo, dir: Direccion): Celda
 }
 
 class Registro {
@@ -67,21 +67,21 @@ interface Direccion {
     + {abstract} mover(f, c, esquinas: Array<Celdas>): Celda
 }
 
-Jugador .up.> Sorpresa
-Tablero -left-> Jugador
+vehiculo .up.> Sorpresa
+Tablero -left-> vehiculo
 Tablero --> GeneradorDeCiudad
 GeneradorDeCiudad .down.> Celda
-Jugador -left-> Vehiculo
-Jugador --> Celda
+vehiculo -left-> Vehiculo
+vehiculo --> Celda
 Tablero -right-> Registro
 Calle -left-> Modificador
-Calle .left.> Jugador
-Celda ..> Jugador
+Calle .left.> vehiculo
+Celda ..> vehiculo
 Modificador .left.> Vehiculo
 Celda "2" -- "4" Calle
-Modificador .up.> Jugador
+Modificador .up.> vehiculo
 Tablero ..> Direccion
-Jugador ..> Direccion
+vehiculo ..> Direccion
 Celda .right.> Direccion
 
 @enduml
@@ -158,44 +158,44 @@ interface Sorpresa {
 }
 
 interface Modificador {
-    + {abstract} cruzarCon(jug: Jugador)
+    + {abstract} cruzarCon(jug: vehiculo)
     + {abstract} aplicarA(veh: Vehiculo)
 }
 
 class Pozo {
-    + cruzarCon(jug:Jugador)
+    + cruzarCon(jug:vehiculo)
     + aplicarA(veh: Vehiculo)
 }
 
 class ControlPolicial {
-    + cruzarCon(jug:Jugador)
+    + cruzarCon(jug:vehiculo)
     + aplicarA(veh: Vehiculo)
 }
 
 class Piquete {
-    + cruzarCon(jug:Jugador)
+    + cruzarCon(jug:vehiculo)
     + aplicarA(veh: Vehiculo)
 }
 
 class Favorable {
-    + cruzarCon(jug:Jugador)
+    + cruzarCon(jug:vehiculo)
     + aplicarA(veh: Vehiculo)
     + aplicarSorpresa(mov: long): long
 }
 
 class Desfavorable {
-    + cruzarCon(jug:Jugador)
+    + cruzarCon(jug:vehiculo)
     + aplicarA(veh: Vehiculo)
     + aplicarSorpresa(mov: long): long    
 }
 
 class CambioDeVehiculo {
-    + cruzarCon(jug:Jugador)
+    + cruzarCon(jug:vehiculo)
     + aplicarA(veh: Vehiculo)
 }
 
 class Nulo {
-    + cruzarCon(jug:Jugador)
+    + cruzarCon(jug:vehiculo)
     + aplicarA(veh: Vehiculo)
 }
 
